@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="../static/css/home.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+
+
+
+
+
+    <div class="container1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        <div class="header">
+            <div class="one">
+                <img src="../static/img/logo.png" alt="logo" width="120px" height="120px">
+            </div>
+            <div class="two">
+                <p>Contact Us</p>
+                <a href="#"><i class='bx bxl-facebook-circle'></i></a>
+                <a href="#"><i class='bx bxl-instagram'></i></a>
+                <a href="#"><i class='bx bxl-twitter'></i></a>
+            </div>
+        </div>
+
+        <div class="drop" style="    display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin: 10px;">
+            <div class="select">
+                <div class="selected" data-default="You Can Visit !" data-one="Front Desk" data-two="Pacs" data-three="Radiologist">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" class="arrow">
+                        <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path>
+                    </svg>
+                </div>
+                <div class="options">
+                    <div title="You Can Visit !">
+                        <input id="all" name="option" type="radio" checked>
+                        <label class="option" for="all" data-txt="You Can Visit !"></label>
+                    </div>
+                    <div title="Front Desk" id="front_option">
+                        <input id="option-1" name="option" type="radio">
+                        <label class="option" for="option-1" data-txt="Front Desk"></label>
+                    </div>
+                    <div title="Pacs" id = "pacs_option">
+                        <input id="option-2" name="option" type="radio">
+                        <label class="option" for="option-2" data-txt="Pacs"></label>
+                    </div>
+                    <div title="Radiologist" id = "radiologist_option">
+                        <input id="option-3" name="option" type="radio">
+                        <label class="option" for="option-3" data-txt="Radiologist"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="title">
+            <h1>Welcome To Your Home</h1>
+            
+        </div>
+
+        <div class="first">
+            <a href="#" id="doctor-link" style="text-decoration: none;">
+                <div class="container">
+                    <div class="box">
+                        <img src="../static/img/doctor.jpg" alt="" style="width: 120px; height: 120px; margin-left: 33px;">
+                        <div>
+                            <h3>Doctor</h3>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" id="radiologist-link" style="text-decoration: none;">
+                <div class="container">
+                    <div class="box">
+                        <img src="../static/img/radiologist.jpg" alt="" style="width: 120px; height: 120px; margin-left: 33px;">
+                        <div>
+                            <h3>Radiologist</h3>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" id="receptionist-link" style="text-decoration: none;">
+                <div class="container">
+                    <div class="box">
+                        <img src="../static/img/receptionist.jpg" alt="" style="width: 120px; height: 120px; margin-left: 33px;">
+                        <div>
+                            <h3>Receptionist</h3>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" id="engineer-link" style="text-decoration: none;">
+                <div class="container">
+                    <div class="box">
+                        <img src="../static/img/engineer.jpg" alt="" style="width: 120px; height: 120px; margin-left: 33px;">
+                        <div>
+                            <h3>Clinical Engineer</h3>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="second">
+            <a href="#" id="device-link" style="text-decoration: none;">
+                <div class="container">
+                    <div class="box">
+                        <img src="../static/img/device.jpg" alt="" style="width: 120px; height: 120px; margin-left: 33px;">
+                        <div>
+                            <h3>Device</h3>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" id="patient-link" style="text-decoration: none;">
+                <div class="container">
+                    <div class="box">
+                        <img src="../static/img/patient.jpg" alt="" style="width: 120px; height: 120px; margin-left: 33px;">
+                        <div>
+                            <h3>Patient</h3>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" id="branch-link" style="text-decoration: none;">
+                <div class="container">
+                    <div class="box">
+                        <img src="../static/img/branch.jpg" alt="" style="width: 120px; height: 120px; margin-left: 33px;">
+                        <div>
+                            <h3>Branch</h3>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" id="hr-link" style="text-decoration: none;">
+                <div class="container">
+                    <div class="box">
+                        <img src="../static/img/doctor.jpg" alt="" style="width: 120px; height: 120px; margin-left: 33px;">
+                        <div>
+                            <h3>HR</h3>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" id="branch-manager-link" style="text-decoration: none;">
+                <div class="container">
+                    <div class="box">
+                        <img src="../static/img/doctor.jpg" alt="" style="width: 120px; height: 120px; margin-left: 33px;">
+                        <div>
+                            <h3>Branch Manager</h3>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+    <script src="../static/JS/home.js"></script>
+    <script src="https://kit.fontawesome.com/8fdfd2bc9a.js" crossorigin="anonymous"></script>

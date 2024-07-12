@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Charts</title>
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- <script>src="../static/JS/radiology_charts.js"</script> -->
+    <link rel="stylesheet" href="../static/css/rad.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+ 
+    <div class="container_main" style="    width: 96%;">
+
+           
+
+        <div class="first">
+
+            <div class="one">
+                <img src="../static/img/logo.png" alt="logo" width="50px" height="50px">
+            </div>
+            <div class="two">
+                <a href="#" class="a">Rana Essam</a>
+                <ul class="dropdown">
+                    <li><a href="#" id="show13" style=" text-decoration: none; color: black;">My account</a></li>
+                    <li><a href="#" style=" text-decoration: none; color: black;">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+
+
+        <div class="container" id="main">
+            <div class="form-wrapper right">
+                <div class="first1">
+                    <div class="chart">
+                        <h2>Gender Distribution</h2>
+                        <canvas id="genderChart"></canvas>
+                    </div>
+                    <div class="chart">
+                        <h2>Payment Type Distribution</h2>
+                        <canvas id="paymentTypeChart"></canvas>
+                    </div>
+                </div>
+                <div class="second1">
+                    <div class="chart">
+                        <h2>Technique Distribution</h2>
+                        <canvas id="techniqueChart"></canvas>
+                    </div>
+                    <div class="chart">
+                        <h2>Salary Distribution</h2>
+                        <div id="payment"></div>
+                        <canvas id="salaryChart"></canvas>
+                    </div>
+                </div>
+                <div class="prev">
+                    <p>See The Device Data <a href="#" id="scrollDownButton">Show me</a></p>
+                </div>
+            </div>
+    
+            <div class="form-wrapper left">
+                <div class="second">
+                    <div class="search radiologist_bar">
+                        <div class="bars">
+                            <h4>Date:</h4>
+                            <label>
+                                <input type="text" placeholder="Enter the Study Date" name="srh_date">
+                            </label>
+                        </div>
+                        <div class="bars">
+                            <h4>Patient SSN:</h4>
+                            <label><input type="text" placeholder="Enter the ID of the Patient" name="srh_pssn"></label>
+                        </div>
+                        <div class="bars">
+                            <h4>Branch:</h4>
+                            <input type="text" placeholder="Enter the Branch" name="srh_branch">
+                        </div>
+                        <div class="bars">
+                            <h4>Modality:</h4>
+                            <label><input type="text" placeholder="Enter the Modality" name="srh_modality"></label>
+                        </div>
+
+                        <a href="#" id="show" style="text-decoration: none;"><i class='bx bx-folder-plus' style="padding: 16px 0 0 0px;"></i></a>
+                    </div>
+                </div>
+                <div class="three">
+                    <div class="table-container" id="radiologistTableContainer">
+                        <table class="styled-table">
+                            <h1 id="tableTitle">Radiologist Data</h1>
+                            
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>ID</th>
+                                    <th>Age</th>
+                                    <th>Gender</th>
+                                    <th>Phone Number</th>
+                                    <th>Email</th>
+                                    <th>Password</th>
+                                    <th>Address</th>
+                                    <th>Salary</th>
+                                    <th>Pay Scale</th>
+                                    <th>Start Shift</th>
+                                    <th>End Shift</th>
+                                    <th>Branch ID</th>
+                                    <th>Technique</th>
+                                    <th><i class='bx bx-user-plus'></i></th>
+                                </tr>
+                            </thead>
+                            <tbody id="radiologistTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="prev1">
+                    <p>See The Statistics <a href="#" id="scrollUpButton">Return Back</a></p>
+                </div>
+                <div class="four">
+                    <div class="add" id="hidden">
+                        <form action="/" method="post">
+                            <i class='bx bx-x' id="hide"></i>
+                            <div class="container2">
+                                <div class="left">
+                                    <div class="detail">
+                                        <span class="span">Radiologist Name</span>
+                                        <input name="name" type="text" placeholder="Enter the Name of the Patient">
+                                    </div>
+                                    <div class="detail">
+                                        <span class="span">Radiologist SSN</span>
+                                        <input name="patient_ssn" type="text" placeholder="Enter The Patient SSN">
+                                    </div>
+                                    <div class="detail">
+                                        <span class="span">Radiologist Age</span>
+                                        <input name="age" type="text" placeholder="Enter The Age">
+                                    </div>
+                                    <div class="detail">
+                                        <span class="span">Radiologist Address </span>
+                                        <input name="address" type="text" placeholder="Enter the city ">
+                                    </div>
+                                    <div class="detail">
+                                        <span class="span">Radiologist Phone Number</span>
+                                        <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                                    </div>
+                                    <div class="radio-container">
+                                        <div class="radio-wrapper">
+                                            <label class="radio-button">
+                                                <input id="option1" name="radio-group" type="radio">
+                                                <span class="radio-checkmark"></span>
+                                                <span class="radio-label">Male</span>
+                                            </label>
+                                        </div>
+                                        <div class="radio-wrapper">
+                                            <label class="radio-button">
+                                                <input id="option2" name="radio-group" type="radio">
+                                                <span class="radio-checkmark"></span>
+                                                <span class="radio-label">Female</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="detail">
+                                        <span class="span">Radiologist Email</span>
+                                        <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                                    </div>
+                                    <div class="detail">
+                                        <span class="span">Password</span>
+                                        <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                                    </div>
+                                    <div class="detail">
+                                        <span class="span">Payment</span>
+                                        <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                                    </div>
+                                    <div class="detail">
+                                        <span class="span">Pay-Scale</span>
+                                        <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                                    </div>
+                                    <div class="detail">
+                                        <span class="span">Technique</span>
+                                        <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                                    </div>
+                                    <div class="shift">
+                                        <div class="select">
+                                            <div class="selected" data-default="Start Shift" data-one="8:00 am" data-two="6:00 pm">
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" class="arrow">
+                                                    <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path>
+                                                </svg>
+                                            </div>
+                                            <div class="options">
+                                                <div title="Start Shift">
+                                                    <input id="all" name="option" type="radio" checked="" />
+                                                    <label class="option" for="all" data-txt="Start Shift"></label>
+                                                </div>
+                                                <div title="8:00 am">
+                                                    <input id="option-1" name="option" type="radio" />
+                                                    <label class="option" for="option-1" data-txt="8:00 am"></label>
+                                                </div>
+                                                <div title="6:00 pm">
+                                                    <input id="option-2" name="option" type="radio" />
+                                                    <label class="option" for="option-2" data-txt="6:00 pm"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="select1">
+                                            <div class="selected1" data-default="End Shift" data-one="4:00 pm" data-two="12:00 am">
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" class="arrow1">
+                                                    <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path>
+                                                </svg>
+                                            </div>
+                                            <div class="options1">
+                                                <div title="End Shift">
+                                                    <input id="all1" name="option1" type="radio" checked="" />
+                                                    <label class="option1" for="all1" data-txt="End Shift"></label>
+                                                </div>
+                                                <div title="4:00 pm">
+                                                    <input id="option1-1" name="option1" type="radio" />
+                                                    <label class="option1" for="option1-1" data-txt="4:00 pm"></label>
+                                                </div>
+                                                <div title="12:00 am">
+                                                    <input id="option1-2" name="option1" type="radio" />
+                                                    <label class="option1" for="option1-2" data-txt="12:00 am"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="detail">
+                                        <span class="span">Branch ID</span>
+                                        <input name="branch_id" type="text" placeholder="Enter the Branch ID">
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="sumbit">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        document.getElementById('scrollDownButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.querySelector('.form-wrapper.left').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        document.getElementById('scrollUpButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.querySelector('.form-wrapper.right').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+
+
+
+<script>
+
+    fetch('/gender-radiology')
+    .then(response => response.json())
+    .then(data => {
+        const labels = data.map(device => device.gender);
+        const values = data.map(device => device.count);
+
+        const ctx = document.getElementById('genderChart').getContext('2d');
+
+        ctx.canvas.width = 200; // Set canvas width
+        ctx.canvas.height = 200; // Set canvas height
+
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: values,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: false, // Disable responsiveness to set fixed size
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching number of malfunctions:', error);
+    });
+
+
+
+
+
+
+
+
+
+    fetch('/payment-radiology')
+    .then(response => response.json())
+    .then(data => {
+        const labels = data.map(device => device.payment);
+        const values = data.map(device => device.count);
+
+        const ctx = document.getElementById('paymentTypeChart').getContext('2d');
+
+        ctx.canvas.width = 200; // Set canvas width
+        ctx.canvas.height = 200; // Set canvas height
+
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: values,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: false, // Disable responsiveness to set fixed size
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching number of malfunctions:', error);
+    });
+
+
+
+
+
+    fetch('/salary-radiology')  // Replace with your API endpoint
+        .then(response => response.json())
+        .then(data => {
+            // Extract labels (ranges) and data points
+            const labels = data.map(item => item.salary_range);
+            const values = data.map(item => item.count);
+
+            const ctx = document.getElementById('salaryChart').getContext('2d');
+            ctx.canvas.width = 200;
+            ctx.canvas.height = 200;
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'salary Range',
+                        data: values,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.5)',
+                            'rgba(54, 162, 235, 0.5)',
+                            'rgba(255, 206, 86, 0.5)',
+                            'rgba(75, 192, 192, 0.5)',
+                            'rgba(153, 102, 255, 0.5)'
+                            // Add more colors as needed
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)'
+                            // Matching border colors
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        r: {
+                            angleLines: {
+                                display: false
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 10
+                        }
+                    },
+                    elements: {
+                        arc: {
+                            borderWidth: 0 // Remove border from arcs
+                        }
+                    },
+                    radius: 10, // Set the radius as a percentage of available space
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching payment range data:', error);
+        });
+
+
+
+
+
+
+
+
+
+        fetch('/technique-radiology')  // Replace with your actual endpoint
+        .then(response => response.json())
+        .then(data => {
+            const labels = data.map(item => item.technique);
+            const values = data.map(item => item.count);
+
+            // Setup canvas and context
+            const canvas = document.getElementById('techniqueChart');
+            const ctx = canvas.getContext('2d');
+
+            // Create chart
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Technique Count',
+                        data: values,
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching technique table data:', error);
+        });
+    </script>
+
+
+
+
+
+<script>
+    // Function to fetch and populate radiologist table on page load
+    document.addEventListener('DOMContentLoaded', function () {
+        fetchAndPopulateRadiologistTable();
+    });
+
+    // Function to fetch radiologist table data
+    function fetchAndPopulateRadiologistTable() {
+        fetch('/radiologist_table')
+            .then(response => response.json())
+            .then(data => populateRadiologistTable(data))
+            .catch(error => console.error('Error fetching radiologist data:', error));
+    }
+
+    // Function to populate radiologist table
+    function populateRadiologistTable(data) {
+        const tableBody = document.getElementById('radiologistTableBody');
+        populateTable(tableBody, data, 'radiologist');
+    }
+
+    // Generic function to populate a table body with data
+    function populateTable(tableBody, data, type) {
+        tableBody.innerHTML = ''; // Clear existing table rows
+
+        data.forEach((item, index) => {
+            const row = document.createElement('tr');
+            row.id = `${type}-row-${index}`;
+
+            // Adjust fields based on your actual data structure
+            row.innerHTML = `
+                <td>${item.name}</td>
+                <td>${item.employee_id}</td>
+                <td>${item.age}</td>
+                <td>${item.gender}</td>
+                <td>${item.phone_number}</td>
+                <td>${item.email}</td>
+                <td>${item.password}</td>
+                <td>${item.address}</td>
+                <td>${item.salary}</td>
+                <td>${item.pay_scale}</td>
+                <td>${item.start_shift}</td>
+                <td>${item.end_shift}</td>
+                <td>${item.branch_id}</td>
+                <td>${item.technique ? item.technique : ''}</td>
+                <td><button type="button" onclick="editRow('${type}', ${index})">Edit</button></td>
+            `;
+            tableBody.appendChild(row);
+        });
+    }
+
+    // Function to convert a table row to input fields for editing
+    window.editRow = function(type, index) {
+        const row = document.getElementById(`${type}-row-${index}`);
+        const cells = row.getElementsByTagName('td');
+
+        // Convert each cell to an input field except the last cell (Action button)
+        for (let i = 0; i < cells.length - 1; i++) {
+            const cell = cells[i];
+            const originalValue = cell.innerText;
+            cell.innerHTML = `<input type="text" value="${originalValue}">`;
+        }
+
+        // Change the Edit button to an Update button
+        const editButton = cells[cells.length - 1].getElementsByTagName('button')[0];
+        editButton.textContent = 'Update';
+        editButton.onclick = function() { saveRow(type, index); };
+    };
+
+    // Function to save the updated data and convert input fields back to text
+    window.saveRow = function(type, index) {
+        const row = document.getElementById(`${type}-row-${index}`);
+        const cells = row.getElementsByTagName('td');
+
+        // Create an object to hold updated data
+        const updatedData = {};
+
+        // Update each cell with the input value and save to the updatedData object
+        for (let i = 0; i < cells.length - 1; i++) {
+            const inputField = cells[i].getElementsByTagName('input')[0];
+            const newValue = inputField.value;
+            cells[i].innerText = newValue;
+
+            // Map updated values to the corresponding fields in updatedData
+            switch (i) {
+                case 0:
+                    updatedData.name = newValue;
+                    break;
+                case 1:
+                    updatedData.employee_id = newValue;
+                    break;
+                case 2:
+                    updatedData.age = newValue;
+                    break;
+                case 3:
+                    updatedData.gender = newValue;
+                    break;
+                case 4:
+                    updatedData.phone_number = newValue;
+                    break;
+                case 5:
+                    updatedData.email = newValue;
+                    break;
+                case 6:
+                    updatedData.password = newValue;
+                    break;
+                case 7:
+                    updatedData.address = newValue;
+                    break;
+                case 8:
+                    updatedData.salary = newValue;
+                    break;
+                case 9:
+                    updatedData.pay_scale = newValue;
+                    break;
+                case 10:
+                    updatedData.start_shift = newValue;
+                    break;
+                case 11:
+                    updatedData.end_shift = newValue;
+                    break;
+                case 12:
+                    updatedData.branch_id = newValue;
+                    break;
+                case 13:
+                    updatedData.technique = newValue;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        // Change the Update button back to Edit button
+        const updateButton = cells[cells.length - 1].getElementsByTagName('button')[0];
+        updateButton.textContent = 'Edit';
+        updateButton.onclick = function() { editRow(type, index); };
+
+        // Send updated data to the server
+        sendUpdatedData(type, updatedData);
+    };
+
+    // Function to send updated data to the server
+    function sendUpdatedData(type, data) {
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        fetch("/update_radiologists_tablee", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': csrfToken // Add CSRF token header
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
+        .then(result => {
+            console.log('Update successful:', result);
+            // Optionally refresh the table or provide feedback to the user
+        })
+        .catch(error => {
+            console.error('Error updating data:', error);
+            // Optionally handle error and provide feedback to the user
+        });
+    }
+</script>
+<script>
+    document.getElementById("show13").addEventListener("click", function () {
+          document.getElementById("hidden13").style.display = "block";
+      });
+  document.getElementById("hide13").addEventListener("click", function () {
+          document.getElementById("hidden13").style.display = "none";
+      });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

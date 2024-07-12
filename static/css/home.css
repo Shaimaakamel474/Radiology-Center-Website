@@ -1,0 +1,291 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+:root{
+  --blue:   #1EBAB9ff;
+  --black: #0D3E4Bff;
+  --red: #F45B46ff;
+  --bblue:  rgb(34, 92, 106);
+}
+
+
+
+html{
+  scroll-behavior: smooth;
+}
+
+body {
+  display: flex;
+  background-position: center;
+  background-position: center;
+  background-size: cover;
+  background-image: url(../img/background_register.jpg);
+
+}
+
+.container1{
+
+  width: 100%;
+}
+
+.header {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--bblue);
+}
+
+.header .one{
+  margin-left: 10px;
+}
+
+.header .one img{
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.header .two{
+  width: 165px;
+  position: relative;
+  top: 18px;
+  right: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.header .two p{
+  color: #ffffff;
+}
+
+.header .two a{
+  text-decoration: none;
+  color: #ffffff;
+
+}
+
+.container1 .title{
+  font-size: 17px;
+  width: 100%;
+  top: -53px;
+  text-align: center;
+  padding-bottom: 15px;
+  font-weight: bold;
+  position: relative;
+  color: var(--bblue)
+}
+
+
+.container1 .first{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-around;
+  position: relative;
+  top: 18px;
+
+}
+
+
+
+
+.container1 .second{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-around;
+  position: relative;
+  top: 60px;
+
+}
+
+
+
+.container1 {
+color: white;
+position: relative;
+font-family: sans-serif;
+}
+
+.container::before,
+.container::after {
+content: "";
+background-color: var(--bblue);
+position: absolute;
+}
+
+/* .container::before {
+border-radius: 50%;
+width: 6rem;
+height: 6rem;
+top: 30%;
+right: 7%;
+}
+
+.container::after {
+content: "";
+position: absolute;
+height: 3rem;
+top: 8%;
+right: 5%;
+border: 1px solid;
+} */
+
+.container .box {
+width: 11.875em;
+height: 13.875em;
+padding: 1rem 0;
+background-color: rgba(255, 255, 255, 0.074);
+border: 1px solid rgba(255, 255, 255, 0.222);
+-webkit-backdrop-filter: blur(20px);
+backdrop-filter: blur(20px);
+border-radius: 0.7rem;
+transition: all ease 0.3s;
+}
+
+.container .box {
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+
+
+
+
+.container .box div span:nth-child(3) {
+font-weight: 500;
+margin-right: 0.2rem;
+}
+
+.container .box:hover {
+box-shadow: 0px 0px 20px 1px  var(--bblue);
+border: 1px solid rgba(255, 255, 255, 0.454);
+}
+
+
+ h1{
+  color: black;
+}
+
+.container .box h3{
+  color: white;
+  text-align: center;
+}
+
+
+.container .box img{
+  border-radius: 50%;
+  padding: 4px;
+  border: 2px solid var(--bblue);
+}
+
+.contanier1 .drop{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 10px 15px;
+  justify-content: flex-end;
+}
+
+.select {
+  width: fit-content;
+  cursor: pointer;
+  position: relative;
+  transition: 300ms;
+  color: white;
+  overflow: hidden;
+}
+
+.selected {
+  background-color: #2a2f3b;
+  padding: 5px;
+  margin-bottom: 3px;
+  border-radius: 5px;
+  position: relative;
+  z-index: 100000;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.arrow {
+  position: relative;
+  right: 0px;
+  height: 10px;
+  transform: rotate(-90deg);
+  width: 25px;
+  fill: white;
+  z-index: 100000;
+  transition: 300ms;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #2a2f3b;
+  position: relative;
+  top: -100px;
+  opacity: 0;
+  transition: 300ms;
+}
+
+.select:hover > .options {
+  opacity: 1;
+  top: 0;
+}
+
+.select:hover > .selected .arrow {
+  transform: rotate(0deg);
+}
+
+.option {
+  border-radius: 5px;
+  padding: 5px;
+  transition: 300ms;
+  background-color: #2a2f3b;
+  width: 150px;
+  font-size: 15px;
+}
+.option:hover {
+  background-color: #323741;
+}
+
+.options input[type="radio"] {
+  display: none;
+}
+
+.options label {
+  display: inline-block;
+}
+.options label::before {
+  content: attr(data-txt);
+}
+
+.options input[type="radio"]:checked + label {
+  display: none;
+}
+
+.options input[type="radio"]#all:checked + label {
+  display: none;
+}
+
+.select:has(.options input[type="radio"]#all:checked) .selected::before {
+  content: attr(data-default);
+}
+.select:has(.options input[type="radio"]#option-1:checked) .selected::before {
+  content: attr(data-one);
+}
+.select:has(.options input[type="radio"]#option-2:checked) .selected::before {
+  content: attr(data-two);
+}
+.select:has(.options input[type="radio"]#option-3:checked) .selected::before {
+  content: attr(data-three);
+}

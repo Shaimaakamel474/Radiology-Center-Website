@@ -1,0 +1,12 @@
+[{
+    "headers": {
+        "device": ["Device Name", "Type", "Location", "Status", "Branch"]
+    },
+    "data": {
+        "device": [
+            { "devicename": "MRI Scanner", "type": "Imaging", "location": "Main", "status": "Operational", "branch": "Main" },
+            { "devicename": "CT Scanner", "type": "Imaging", "location": "West", "status": "Maintenance", "branch": "West" }
+        ]
+    }
+}
+]

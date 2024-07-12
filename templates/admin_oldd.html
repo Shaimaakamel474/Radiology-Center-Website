@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Admin </title>
+    <link rel="stylesheet" href="../static/css/admin.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <style>
+        .table-container {
+            display: none;
+        }
+        .table-container.active {
+            display: block;
+        }
+        .search {
+    display: none;
+}
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo"><img src="" alt="logo" width="40px" height="40px"></div>
+        <ul class="main">
+            <li><a href="#" id="doctorLink"><i class="fas fa-tachometer-alt"></i><span>Doctor</span></a></li>
+            <li><a href="#" id="radiologistLink"><i class="fas fa-tachometer-alt"></i><span>Radiologist</span></a></li>
+            <li><a href="#" id="clinicalEngineerLink"><i class="fas fa-tachometer-alt"></i><span>Clinical Engineer</span></a></li>
+            <li><a href="#" id="receptionistLink"><i class="fas fa-tachometer-alt"></i><span>Receptionist</span></a></li>
+            <li><a href="#" id="hrLink"><i class="fas fa-tachometer-alt"></i><span>HR</span></a></li>
+            <li><a href="#" id="managerLink"><i class="fas fa-tachometer-alt"></i><span>Manager</span></a></li>
+            <li><a href="#" id="patientLink"><i class="fas fa-tachometer-alt"></i><span>Patient</span></a></li>
+            <li><a href="#" id="deviceLink"><i class="fas fa-tachometer-alt"></i><span>Device</span></a></li>
+            <li><a href="#" id="branchLink"><i class="fas fa-tachometer-alt"></i><span>Branch</span></a></li>
+        </ul>
+    </div>
+
+    <div class="three">
+                
+        <div class="search-container" id="doctorSearchContainer">
+            <div class="search doctor_bar">
+                <div class="bars">
+                    <h4>Date:</h4>
+                    <label class="container">
+                        <input type="text" placeholder="Enter the Study Date" name="srh_date">
+                    </label>
+                </div>
+                <div class="bars">
+                    <h4>Patient SSN:</h4>
+                    <label><input type="text" placeholder="Enter the ID of the Patient" name="srh_pssn"></label>
+                </div>
+                <div class="bars">
+                    <h4>Branch:</h4>
+                    <input type="text" placeholder="Enter the Branch" name="srh_branch">
+                </div>
+                <div class="bars">
+                    <h4>Modality:</h4>
+                    <label><input type="text" placeholder="Enter the Modality" name="srh_modality"></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-container" id="radiologistSearchContainer">
+            <div class="search radiologist_bar">
+                <div class="bars">
+                    <h4>DateRRR:</h4>
+                    <label class="container">
+                        <input type="text" placeholder="Enter the Study Date" name="srh_date">
+                    </label>
+                </div>
+                <div class="bars">
+                    <h4>Patient SSN:</h4>
+                    <label><input type="text" placeholder="Enter the ID of the Patient" name="srh_pssn"></label>
+                </div>
+                <div class="bars">
+                    <h4>Branch:</h4>
+                    <input type="text" placeholder="Enter the Branch" name="srh_branch">
+                </div>
+                <div class="bars">
+                    <h4>Modality:</h4>
+                    <label><input type="text" placeholder="Enter the Modality" name="srh_modality"></label>
+                </div>
+            </div>
+        </div>
+
+            <div class="search-container" id="clinicalEngineerSearchContainer">
+                <div class="search clinicalEngineer_bar">
+                    <div class="bars">
+                        <h4>DateRRR:</h4>
+                        <label class="container">
+                            <input type="text" placeholder="Enter the Study Date" name="srh_date">
+                        </label>
+                    </div>
+                    <div class="bars">
+                        <h4>Patient SSN:</h4>
+                        <label><input type="text" placeholder="Enter the ID of the Patient" name="srh_pssn"></label>
+                    </div>
+                    <div class="bars">
+                        <h4>Branch:</h4>
+                        <input type="text" placeholder="Enter the Branch" name="srh_branch">
+                    </div>
+                    <div class="bars">
+                        <h4>Modality:</h4>
+                        <label><input type="text" placeholder="Enter the Modality" name="srh_modality"></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-container" id="receptionistSearchContainer">
+                <div class="search receptionist_bar">
+                    <div class="bars">
+                        <h4>DateRRR:</h4>
+                        <label class="container">
+                            <input type="text" placeholder="Enter the Study Date" name="srh_date">
+                        </label>
+                    </div>
+                    <div class="bars">
+                        <h4>Patient SSN:</h4>
+                        <label><input type="text" placeholder="Enter the ID of the Patient" name="srh_pssn"></label>
+                    </div>
+                    <div class="bars">
+                        <h4>Branch:</h4>
+                        <input type="text" placeholder="Enter the Branch" name="srh_branch">
+                    </div>
+                    <div class="bars">
+                        <h4>Modality:</h4>
+                        <label><input type="text" placeholder="Enter the Modality" name="srh_modality"></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-container" id="patientSearchContainer">
+                <div class="search patient_bar">
+                    <div class="bars">
+                        <h4>DateRRR:</h4>
+                        <label class="container">
+                            <input type="text" placeholder="Enter the Study Date" name="srh_date">
+                        </label>
+                    </div>
+                    <div class="bars">
+                        <h4>Patient SSN:</h4>
+                        <label><input type="text" placeholder="Enter the ID of the Patient" name="srh_pssn"></label>
+                    </div>
+                    <div class="bars">
+                        <h4>Branch:</h4>
+                        <input type="text" placeholder="Enter the Branch" name="srh_branch">
+                    </div>
+                    <div class="bars">
+                        <h4>Modality:</h4>
+                        <label><input type="text" placeholder="Enter the Modality" name="srh_modality"></label>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="search-container" id="deviceSearchContainer">
+                <div class="search device_bar">
+                    <div class="bars">
+                        <h4>DateRRR:</h4>
+                        <label class="container">
+                            <input type="text" placeholder="Enter the Study Date" name="srh_date">
+                        </label>
+                    </div>
+                    <div class="bars">
+                        <h4>Patient SSN:</h4>
+                        <label><input type="text" placeholder="Enter the ID of the Patient" name="srh_pssn"></label>
+                    </div>
+                    <div class="bars">
+                        <h4>Branch:</h4>
+                        <input type="text" placeholder="Enter the Branch" name="srh_branch">
+                    </div>
+                    <div class="bars">
+                        <h4>Modality:</h4>
+                        <label><input type="text" placeholder="Enter the Modality" name="srh_modality"></label>
+                    </div>
+                </div>
+            </div>
+
+
+               <div class="search-container" id="branchSearchContainer">
+            <div class="search branch_bar">
+                <div class="bars">
+                    <h4>deviceName:</h4>
+                    <label class="container">
+                        <input type="text" placeholder="Enter the Study Date" name="srh_date">
+                    </label>
+                </div>
+                <div class="bars">
+                    <h4>Patient SSN:</h4>
+                    <label><input type="text" placeholder="Enter the ID of the Patient" name="srh_pssn"></label>
+                </div>
+                <div class="bars">
+                    <h4>Branch:</h4>
+                    <input type="text" placeholder="Enter the Branch" name="srh_branch">
+                </div>
+                <div class="bars">
+                    <h4>Modality:</h4>
+                    <label><input type="text" placeholder="Enter the Modality" name="srh_modality"></label>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+ 
+
+
+
+        <div class="search-container" id="hrSearchContainer">
+            <div class="search hr_bar">
+                <div class="bars">
+                    <h4>Date hr:</h4>
+                    <label class="container">
+                        <input type="text" placeholder="Enter the Study Date" name="srh_date">
+                    </label>
+                </div>
+                <div class="bars">
+                    <h4>Patient SSN:</h4>
+                    <label><input type="text" placeholder="Enter the ID of the Patient" name="srh_pssn"></label>
+                </div>
+                <div class="bars">
+                    <h4>Branch:</h4>
+                    <input type="text" placeholder="Enter the Branch" name="srh_branch">
+                </div>
+                <div class="bars">
+                    <h4>Modality:</h4>
+                    <label><input type="text" placeholder="Enter the Modality" name="srh_modality"></label>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="search-container" id="managerSearchContainer">
+            <div class="search manager_bar">
+                <div class="bars">
+                    <h4>Date manager:</h4>
+                    <label class="container">
+                        <input type="text" placeholder="Enter the Study Date" name="srh_date">
+                    </label>
+                </div>
+                <div class="bars">
+                    <h4>Patient SSN:</h4>
+                    <label><input type="text" placeholder="Enter the ID of the Patient" name="srh_pssn"></label>
+                </div>
+                <div class="bars">
+                    <h4>Branch:</h4>
+                    <input type="text" placeholder="Enter the Branch" name="srh_branch">
+                </div>
+                <div class="bars">
+                    <h4>Modality:</h4>
+                    <label><input type="text" placeholder="Enter the Modality" name="srh_modality"></label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+    
+    <div class="tabular--wrapper">
+        
+
+        <div class="table-container" id="doctorTableContainer">
+            <table class="styled-table">
+                <h1 id="tableTitle">Doctor Data</h1>
+                <a href="#" id="show"><i class='bx bx-folder-plus' style="padding: 16px 0 0 0px;"></i></a>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>ID</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>password</th>
+                        <th>Address</th>
+                        <th>Salary</th>
+                        <th>Pay Scale</th>
+                        <th>Start Shift</th>
+                        <th>End Shift</th>
+                        <th>Branch ID</th>
+                        <th>Technique</th>
+
+                    </tr>
+                </thead>
+                <tbody id="doctorTableBody"></tbody>
+            </table>
+        </div>
+        
+        <div class="table-container" id="radiologistTableContainer">
+            <table class="styled-table">
+                <h1 id="tableTitle">Radiologist Data</h1>
+                <a href="#" id="show"><i class='bx bx-folder-plus' style="padding: 16px 0 0 0px;"></i></a>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>ID</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>password</th>
+                        <th>Address</th>
+                        <th>Salary</th>
+                        <th>Pay Scale</th>
+                        <th>Start Shift</th>
+                        <th>End Shift</th>
+                        <th>Branch ID</th>
+                        <th>Technique</th>
+                    </tr>
+                </thead>
+                <tbody id="radiologistTableBody"></tbody>
+            </table>
+        </div>
+        
+        <div class="table-container" id="clinicalEngineerTableContainer">
+            <table class="styled-table">
+                <h1 id="tableTitle">Clinical Data</h1>
+                <a href="#" id="show"><i class='bx bx-folder-plus' style="padding: 16px 0 0 0px;"></i></a>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>ID</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>password</th>
+                        <th>Address</th>
+                        <th>Salary</th>
+                        <th>Pay Scale</th>
+                        <th>Start Shift</th>
+                        <th>End Shift</th>
+                        <th>Branch ID</th>
+                    </tr>
+                </thead>
+                <tbody id="clinicalEngineerTableBody"></tbody>
+            </table>
+        </div>
+        
+        <div class="table-container" id="receptionistTableContainer">
+            <table class="styled-table">
+                <h1 id="tableTitle">Receiptionist Data</h1>
+                <a href="#" id="show"><i class='bx bx-folder-plus' style="padding: 16px 0 0 0px;"></i></a>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>ID</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>password</th>
+                        <th>Address</th>
+                        <th>Salary</th>
+                        <th>Pay Scale</th>
+                        <th>Start Shift</th>
+                        <th>End Shift</th>
+                        <th>Branch ID</th>
+                    </tr>
+                </thead>
+                <tbody id="receptionistTableBody"></tbody>
+            </table>
+        </div>
+
+        <div class="table-container" id="hrTableContainer">
+            <table class="styled-table">
+                <h1 id="tableTitle">HR Data</h1>
+                <a href="#" id="show"><i class='bx bx-folder-plus' style="padding: 16px 0 0 0px;"></i></a>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>ID</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>password</th>
+                        <th>Address</th>
+                        <th>Salary</th>
+                        <th>Pay Scale</th>
+                        <th>Start Shift</th>
+                        <th>End Shift</th>
+                        <th>Branch ID</th>
+                    </tr>
+                </thead>
+                <tbody id="hrTableBody"></tbody>
+            </table>
+        </div>
+
+        <div class="table-container" id="managerTableContainer">
+            <table class="styled-table">
+                <a href="#" id="show"><i class='bx bx-folder-plus' style="padding: 16px 0 0 0px;"></i></a><h1 id="tableTitle"> Branch Managers Data</h1>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>ID</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>password</th>
+                        <th>Address</th>
+                        <th>Salary</th>
+                        <th>Pay Scale</th>
+                        <th>Start Shift</th>
+                        <th>End Shift</th>
+                        <th>Branch ID</th>
+                    </tr>
+                </thead>
+                <tbody id="managerTableBody"></tbody>
+            </table>
+        </div>
+        
+
+
+
+        <div class="table-container" id="patientTableContainer">
+            <table class="styled-table">
+                <h1 id="tableTitle">Patient Data</h1>
+                <a href="#" id="show"><i class='bx bx-folder-plus' style="padding: 16px 0 0 0px;"></i></a>
+                <thead>
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>ID</th>
+                        <th>Gender</th>
+                        <th>Age</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>password</th>
+                        <th>Address</th>
+                        <th> First Booking technique</th>
+                    </tr>
+                </thead>
+                <tbody id="patientTableBody"></tbody>
+            </table>
+        </div>
+        
+        <div class="table-container" id="deviceTableContainer">
+            <table class="styled-table">
+                <h1 id="tableTitle">Devices Data</h1>
+                <a href="#" id="show"><i class='bx bx-folder-plus' style="padding: 16px 0 0 0px;"></i></a>
+                <thead>
+                    <tr>
+                        <th>Device Name</th>
+                        <th>Device SN</th>
+                        <th>Technique</th>
+                        <th>Branch</th>
+                        <th>data1</th>
+                        <th>data2</th>
+                        <th>data3</th>
+                    </tr>
+                </thead>
+                <tbody id="deviceTableBody"></tbody>
+            </table>
+        </div>
+
+        <div class="table-container" id="branchTableContainer">
+            <table class="styled-table">
+                <h1 id="tableTitle">Branches Data</h1>
+                <a href="#" id="show"><i class='bx bx-folder-plus' style="padding: 16px 0 0 0px;"></i></a>
+                <thead>
+                    <tr>
+                        <th>Branch ID</th>
+                        <th>Location</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>Manager ID</th>
+                    </tr>
+                </thead>
+                <tbody id="branchTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+
+<!-- ///////////////////////////////////////////////////// -->
+
+
+
+
+
+<div class="add" id="hidden">
+    <form action="/" method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <!-- herrreee formmm for data_patientt -->
+        <i class='bx bx-x' id="hide"></i>
+        <div class="container2" >
+            <div class="left">
+
+                <img src="../static/img/portrait-man-laughing.jpg" alt="" style="width: 80px; height:80px; position: relative; left: 256px;">
+
+                <div class="detail">
+                    <span class="span">Doctor Name</span>
+                    <input name="name" type="text" placeholder="Enter the Name of the Patient">
+                </div>
+
+
+                <div class="detail">
+                    <span class="span">Doctor SSN</span>
+                    <input name="patient_ssn" type="text" placeholder="Enter The Patient SSN">
+                </div>
+
+                <div class="detail">
+                    <span class="span">Doctor Age</span>
+                    <input name="age" type="text" placeholder="Enter The Age">
+                </div>
+
+
+                <div class="detail">
+                    <span class="span">Doctor Address </span>
+                    <input name="address" type="text" placeholder="Enter the city ">
+                </div>
+
+                <div class="detail">
+                    <span class="span">Doctor Phone Number</span>
+                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                </div>
+
+                <div class="detail">
+                    <span class="span">Doctor Email</span>
+                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                </div>
+
+                <div class="detail">
+                    <span class="span">Password</span>
+                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                </div>
+
+                <div class="detail">
+                    <span class="span">Payment</span>
+                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                </div>
+
+                <div class="detail">
+                    <span class="span">Pay-Scale</span>
+                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                </div>
+                
+
+                <div class="detail">
+                    <span class="span">Technique</span>
+                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                </div>
+
+
+                <div class="shift">
+                    <div class="select">
+                        <div
+                          class="selected"
+                          data-default="Start Shift"
+                          data-one="8:00 am"
+                          data-two="6:00 pm"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="1em"
+                            viewBox="0 0 512 512"
+                            class="arrow"
+                          >
+                            <path
+                              d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+                            ></path>
+                          </svg>
+                        </div>
+                        <div class="options">
+                          <div title="Start Shift">
+                            <input id="all" name="option" type="radio" checked="" />
+                            <label class="option" for="all" data-txt="Start Shift"></label>
+                          </div>
+                          <div title="8:00 am">
+                            <input id="option-1" name="option" type="radio" />
+                            <label class="option" for="option-1" data-txt="8:00 am"></label>
+                          </div>
+                          <div title="6:00 pm">
+                            <input id="option-2" name="option" type="radio" />
+                            <label class="option" for="option-2" data-txt="6:00 pm"></label>
+                          </div>
+                        </div>
+                    </div>
+    
+                    <div class="select1">
+                        <div
+                          class="selected1"
+                          data-default="End Shift"
+                          data-one="4:00 pm"
+                          data-two="12:00 am"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="1em"
+                            viewBox="0 0 512 512"
+                            class="arrow1"
+                          >
+                            <path
+                              d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+                            ></path>
+                          </svg>
+                        </div>
+                        <div class="options1">
+                          <div title="End Shift">
+                            <input id="all1" name="option1" type="radio" checked="" />
+                            <label class="option1" for="all1" data-txt="End Shift"></label>
+                          </div>
+                          <div title="4:00 pm">
+                            <input id="option-11" name="option1" type="radio" />
+                            <label class="option1" for="option-11" data-txt="4:00 pm"></label>
+                          </div>
+                          <div title="12:00 am">
+                            <input id="option-21" name="option1" type="radio" />
+                            <label class="option1" for="option-21" data-txt="12:00 am"></label>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                
+
+
+
+                
+
+                <div class="button">
+                    <input type="submit" value="add" >
+                </div>
+
+
+            </div>
+        </div>
+
+    </form>
+</div>
+
+
+
+
+<div class="add" id="hidden">
+    <form action="/" method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <!-- herrreee formmm for data_patientt -->
+        <i class='bx bx-x' id="hide"></i>
+        <div class="container2" >
+            <div class="left">
+
+                <div class="detail">
+                    <span class="span">Radiologist Name</span>
+                    <input name="name" type="text" placeholder="Enter the Name of the Patient">
+                </div>
+
+
+                <div class="detail">
+                    <span class="span">Radiologist SSN</span>
+                    <input name="patient_ssn" type="text" placeholder="Enter The Patient SSN">
+                </div>
+
+                <div class="detail">
+                    <span class="span">Radiologist Age</span>
+                    <input name="age" type="text" placeholder="Enter The Age">
+                </div>
+
+
+                <div class="detail">
+                    <span class="span">Radiologist Address </span>
+                    <input name="address" type="text" placeholder="Enter the city ">
+                </div>
+
+                <div class="detail">
+                    <span class="span">Radiologist Phone Number</span>
+                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                </div>
+
+                <div class="radio-container">
+                    <div class="radio-wrapper">
+                      <label class="radio-button">
+                        <input id="option1" name="radio-group" type="radio">
+                        <span class="radio-checkmark"></span>
+                        <span class="radio-label">Male</span>
+                      </label>
+                    </div>
+                  
+                    <div class="radio-wrapper">
+                      <label class="radio-button">
+                        <input id="option2" name="radio-group" type="radio">
+                        <span class="radio-checkmark"></span>
+                        <span class="radio-label">Female</span>
+                      </label>
+                    </div>
+                  </div>
+
+
+
+                  <div class="detail">
+                    <span class="span">Radiologist Email</span>
+                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                </div>
+
+                <div class="detail">
+                    <span class="span">Password</span>
+                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                </div>
+
+                <div class="detail">
+                    <span class="span">Payment</span>
+                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                </div>
+
+                <div class="detail">
+                    <span class="span">Pay-Scale</span>
+                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                </div>
+
+
+                <div class="detail">
+                    <span class="span">Technique</span>
+                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                </div>
+                
+
+                
+
+                <div class="shift">
+                    <div class="select">
+                        <div
+                          class="selected"
+                          data-default="Start Shift"
+                          data-one="8:00 am"
+                          data-two="6:00 pm"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="1em"
+                            viewBox="0 0 512 512"
+                            class="arrow"
+                          >
+                            <path
+                              d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+                            ></path>
+                          </svg>
+                        </div>
+                        <div class="options">
+                          <div title="Start Shift">
+                            <input id="all" name="option" type="radio" checked="" />
+                            <label class="option" for="all" data-txt="Start Shift"></label>
+                          </div>
+                          <div title="8:00 am">
+                            <input id="option-1" name="option" type="radio" />
+                            <label class="option" for="option-1" data-txt="8:00 am"></label>
+                          </div>
+                          <div title="6:00 pm">
+                            <input id="option-2" name="option" type="radio" />
+                            <label class="option" for="option-2" data-txt="6:00 pm"></label>
+                          </div>
+                        </div>
+                    </div>
+    
+                    <div class="select1">
+                        <div
+                          class="selected1"
+                          data-default="End Shift"
+                          data-one="4:00 pm"
+                          data-two="12:00 am"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="1em"
+                            viewBox="0 0 512 512"
+                            class="arrow1"
+                          >
+                            <path
+                              d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+                            ></path>
+                          </svg>
+                        </div>
+                        <div class="options1">
+                          <div title="End Shift">
+                            <input id="all1" name="option1" type="radio" checked="" />
+                            <label class="option1" for="all1" data-txt="End Shift"></label>
+                          </div>
+                          <div title="4:00 pm">
+                            <input id="option-11" name="option1" type="radio" />
+                            <label class="option1" for="option-11" data-txt="4:00 pm"></label>
+                          </div>
+                          <div title="12:00 am">
+                            <input id="option-21" name="option1" type="radio" />
+                            <label class="option1" for="option-21" data-txt="12:00 am"></label>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                
+
+                <div class="button">
+                    <input type="submit" value="add" >
+                </div>
+
+
+            </div>
+        </div>
+
+    </form>
+</div>
+<div class="add" id="hidden">
+    <form action="/" method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <!-- herrreee formmm for data_patientt -->
+        <i class='bx bx-x' id="hide"></i>
+        <div class="container2" >
+            <div class="left">
+
+                <div class="detail">
+                    <span class="span">Engineer Name</span>
+                    <input name="name" type="text" placeholder="Enter the Name of the Patient">
+                </div>
+
+
+                <div class="detail">
+                    <span class="span">Engineer SSN</span>
+                    <input name="patient_ssn" type="text" placeholder="Enter The Patient SSN">
+                </div>
+
+                <div class="detail">
+                    <span class="span">Engineer Age</span>
+                    <input name="age" type="text" placeholder="Enter The Age">
+                </div>
+
+
+                <div class="detail">
+                    <span class="span">Engineer Address </span>
+                    <input name="address" type="text" placeholder="Enter the city ">
+                </div>
+
+                <div class="detail">
+                    <span class="span">Engineer Phone Number</span>
+                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                </div>
+
+                <div class="radio-container">
+                    <div class="radio-wrapper">
+                      <label class="radio-button">
+                        <input id="option1" name="radio-group" type="radio">
+                        <span class="radio-checkmark"></span>
+                        <span class="radio-label">Male</span>
+                      </label>
+                    </div>
+                  
+                    <div class="radio-wrapper">
+                      <label class="radio-button">
+                        <input id="option2" name="radio-group" type="radio">
+                        <span class="radio-checkmark"></span>
+                        <span class="radio-label">Female</span>
+                      </label>
+                    </div>
+                  </div>
+
+
+
+                  <div class="detail">
+                    <span class="span">Engineer Email</span>
+                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                </div>
+
+                <div class="detail">
+                    <span class="span">Password</span>
+                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                </div>
+
+                <div class="detail">
+                    <span class="span">Payment</span>
+                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                </div>
+
+                <div class="detail">
+                    <span class="span">Pay-Scale</span>
+                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                </div>
+                
+                <div class="shift">
+                    <div class="select">
+                        <div
+                          class="selected"
+                          data-default="Start Shift"
+                          data-one="8:00 am"
+                          data-two="6:00 pm"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="1em"
+                            viewBox="0 0 512 512"
+                            class="arrow"
+                          >
+                            <path
+                              d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+                            ></path>
+                          </svg>
+                        </div>
+                        <div class="options">
+                          <div title="Start Shift">
+                            <input id="all" name="option" type="radio" checked="" />
+                            <label class="option" for="all" data-txt="Start Shift"></label>
+                          </div>
+                          <div title="8:00 am">
+                            <input id="option-1" name="option" type="radio" />
+                            <label class="option" for="option-1" data-txt="8:00 am"></label>
+                          </div>
+                          <div title="6:00 pm">
+                            <input id="option-2" name="option" type="radio" />
+                            <label class="option" for="option-2" data-txt="6:00 pm"></label>
+                          </div>
+                        </div>
+                    </div>
+    
+                    <div class="select1">
+                        <div
+                          class="selected1"
+                          data-default="End Shift"
+                          data-one="4:00 pm"
+                          data-two="12:00 am"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="1em"
+                            viewBox="0 0 512 512"
+                            class="arrow1"
+                          >
+                            <path
+                              d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+                            ></path>
+                          </svg>
+                        </div>
+                        <div class="options1">
+                          <div title="End Shift">
+                            <input id="all1" name="option1" type="radio" checked="" />
+                            <label class="option1" for="all1" data-txt="End Shift"></label>
+                          </div>
+                          <div title="4:00 pm">
+                            <input id="option-11" name="option1" type="radio" />
+                            <label class="option1" for="option-11" data-txt="4:00 pm"></label>
+                          </div>
+                          <div title="12:00 am">
+                            <input id="option-21" name="option1" type="radio" />
+                            <label class="option1" for="option-21" data-txt="12:00 am"></label>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+
+
+               
+
+                <div class="button">
+                    <input type="submit" value="add" >
+                </div>
+
+
+            </div>
+        </div>
+
+    </form>
+</div>
+<div class="add" id="hidden">
+    <form action="/" method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <!-- herrreee formmm for data_patientt -->
+        <i class='bx bx-x' id="hide"></i>
+        <div class="container2" >
+            <div class="left">
+
+                <div class="detail">
+                    <span class="span">Employee Name</span>
+                    <input name="name" type="text" placeholder="Enter the Name of the Patient">
+                </div>
+
+
+                <div class="detail">
+                    <span class="span">Employee SSN</span>
+                    <input name="patient_ssn" type="text" placeholder="Enter The Patient SSN">
+                </div>
+
+                <div class="detail">
+                    <span class="span">Employee Age</span>
+                    <input name="age" type="text" placeholder="Enter The Age">
+                </div>
+
+
+                <div class="detail">
+                    <span class="span">Employee Address </span>
+                    <input name="address" type="text" placeholder="Enter the city ">
+                </div>
+
+                <div class="detail">
+                    <span class="span">Employee Phone Number</span>
+                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                </div>
+
+                <div class="radio-container">
+                    <div class="radio-wrapper">
+                      <label class="radio-button">
+                        <input id="option1" name="radio-group" type="radio">
+                        <span class="radio-checkmark"></span>
+                        <span class="radio-label">Male</span>
+                      </label>
+                    </div>
+                  
+                    <div class="radio-wrapper">
+                      <label class="radio-button">
+                        <input id="option2" name="radio-group" type="radio">
+                        <span class="radio-checkmark"></span>
+                        <span class="radio-label">Female</span>
+                      </label>
+                    </div>
+                  </div>
+
+
+
+                  <div class="detail">
+                    <span class="span">Employee Email</span>
+                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                </div>
+
+                <div class="detail">
+                    <span class="span">Password</span>
+                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                </div>
+
+                <div class="detail">
+                    <span class="span">Payment</span>
+                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                </div>
+
+                <div class="detail">
+                    <span class="span">Pay-Scale</span>
+                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                </div>
+                
+                <div class="shift">
+                    <div class="select">
+                        <div
+                          class="selected"
+                          data-default="Start Shift"
+                          data-one="8:00 am"
+                          data-two="6:00 pm"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="1em"
+                            viewBox="0 0 512 512"
+                            class="arrow"
+                          >
+                            <path
+                              d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+                            ></path>
+                          </svg>
+                        </div>
+                        <div class="options">
+                          <div title="Start Shift">
+                            <input id="all" name="option" type="radio" checked="" />
+                            <label class="option" for="all" data-txt="Start Shift"></label>
+                          </div>
+                          <div title="8:00 am">
+                            <input id="option-1" name="option" type="radio" />
+                            <label class="option" for="option-1" data-txt="8:00 am"></label>
+                          </div>
+                          <div title="6:00 pm">
+                            <input id="option-2" name="option" type="radio" />
+                            <label class="option" for="option-2" data-txt="6:00 pm"></label>
+                          </div>
+                        </div>
+                    </div>
+    
+                    <div class="select1">
+                        <div
+                          class="selected1"
+                          data-default="End Shift"
+                          data-one="4:00 pm"
+                          data-two="12:00 am"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="1em"
+                            viewBox="0 0 512 512"
+                            class="arrow1"
+                          >
+                            <path
+                              d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+                            ></path>
+                          </svg>
+                        </div>
+                        <div class="options1">
+                          <div title="End Shift">
+                            <input id="all1" name="option1" type="radio" checked="" />
+                            <label class="option1" for="all1" data-txt="End Shift"></label>
+                          </div>
+                          <div title="4:00 pm">
+                            <input id="option-11" name="option1" type="radio" />
+                            <label class="option1" for="option-11" data-txt="4:00 pm"></label>
+                          </div>
+                          <div title="12:00 am">
+                            <input id="option-21" name="option1" type="radio" />
+                            <label class="option1" for="option-21" data-txt="12:00 am"></label>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                
+
+
+                <div class="button">
+                    <input type="submit" value="add" >
+                </div>
+
+
+            </div>
+        </div>
+
+    </form>
+</div>
+
+
+
+<div class="add" id="hidden">
+    <form action="/" method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <!-- herrreee formmm for data_patientt -->
+        <i class='bx bx-x' id="hide"></i>
+        <div class="container2" >
+            <div class="left">
+
+                <div class="detail">
+                    <span class="span">Device Name</span>
+                    <input name="name" type="text" placeholder="Enter the Name of the Patient">
+                </div>
+
+
+                <div class="detail">
+                    <span class="span">Device SSN</span>
+                    <input name="patient_ssn" type="text" placeholder="Enter The Patient SSN">
+                </div>
+
+                <div class="detail">
+                    <span class="span">Device Branch</span>
+                    <input name="age" type="text" placeholder="Enter The Age">
+                </div>
+
+
+                <div class="detail">
+                    <span class="span">Data1</span>
+                    <input name="address" type="text" placeholder="Enter the city ">
+                </div>
+
+                <div class="detail">
+                    <span class="span">Data2</span>
+                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                </div>
+
+                <div class="detail">
+                    <span class="span">Data3</span>
+                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                </div>
+
+
+
+                <div class="button">
+                    <input type="submit" value="add" >
+                </div>
+
+
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<div class="add" id="hidden">
+    <form action="/" method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <!-- herrreee formmm for data_patientt -->
+        <i class='bx bx-x' id="hide"></i>
+        <div class="container2" >
+            <div class="left">
+
+                <div class="detail">
+                    <span class="span">Branch Name</span>
+                    <input name="name" type="text" placeholder="Enter the Name of the Patient">
+                </div>
+
+
+                <div class="detail">
+                    <span class="span">Branch ID</span>
+                    <input name="patient_ssn" type="text" placeholder="Enter The Patient SSN">
+                </div>
+
+                <div class="detail">
+                    <span class="span">Branch Email</span>
+                    <input name="age" type="text" placeholder="Enter The Age">
+                </div>
+
+
+                <div class="detail">
+                    <span class="span">Patient Manager</span>
+                    <input name="address" type="text" placeholder="Enter the city ">
+                </div>
+
+                <div class="detail">
+                    <span class="span">Branch Phone Number</span>
+                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                </div>
+
+                
+                <div class="button">
+                    <input type="submit" value="add" >
+                </div>
+
+
+            </div>
+        </div>
+
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ///////////////////////////////////////////////////// -->
+
+
+
+
+
+
+
+
+
+<script>
+    document.getElementById("show11").addEventListener("click", function () {
+        document.getElementById("hidden11").style.display = "block";
+    });
+    document.getElementById("hide11").addEventListener("click", function () {
+        document.getElementById("hidden11").style.display = "none";
+    });
+
+
+
+
+
+    document.getElementById("show1").addEventListener("click", function () {
+        document.getElementById("hidden1").style.display = "block";
+    });
+    document.getElementById("hide1").addEventListener("click", function () {
+        document.getElementById("hidden1").style.display = "none";
+    });
+
+
+
+
+
+
+
+    document.getElementById("show2").addEventListener("click", function () {
+        document.getElementById("hidden2").style.display = "block";
+    });
+    document.getElementById("hide2").addEventListener("click", function () {
+        document.getElementById("hidden2").style.display = "none";
+    });
+
+
+
+
+    document.getElementById("show3").addEventListener("click", function () {
+        document.getElementById("hidden3").style.display = "block";
+    });
+    document.getElementById("hide3").addEventListener("click", function () {
+        document.getElementById("hidden3").style.display = "none";
+    });
+
+
+
+    
+
+    document.getElementById("show4").addEventListener("click", function () {
+        document.getElementById("hidden4").style.display = "block";
+    });
+    document.getElementById("hide4").addEventListener("click", function () {
+        document.getElementById("hidden4").style.display = "none";
+    });
+
+
+
+
+
+
+    document.getElementById("show5").addEventListener("click", function () {
+        document.getElementById("hidden5").style.display = "block";
+    });
+    document.getElementById("hide5").addEventListener("click", function () {
+        document.getElementById("hidden5").style.display = "none";
+    });
+</script>
+
+
+
+
+
+
+
+    <script src="../static/js/admin.js"></script>
+
+    <script>
+        
+        document.querySelectorAll('.edit-btn').forEach((btn, index) => {
+            btn.addEventListener('click', function() {
+                const container = btn.parentElement;
+                const displayText = container.querySelector('.display-text');
+                const inputField = container.querySelector('.input-field');
+                const editBtn = container.querySelector('.edit-btn');
+                const doneBtn = container.querySelector('.done-btn');
+                
+                inputField.value = displayText.innerText;
+                displayText.style.display = 'none';
+                inputField.style.display = 'inline';
+                editBtn.style.display = 'none';
+                doneBtn.style.display = 'inline';
+            });
+        });
+
+        document.querySelectorAll('.done-btn').forEach((btn, index) => {
+            btn.addEventListener('click', function() {
+                const container = btn.parentElement;
+                const displayText = container.querySelector('.display-text');
+                const inputField = container.querySelector('.input-field');
+                const editBtn = container.querySelector('.edit-btn');
+                const doneBtn = container.querySelector('.done-btn');
+                
+                displayText.innerText = inputField.value;
+                displayText.style.display = 'inline';
+                inputField.style.display = 'none';
+                editBtn.style.display = 'inline';
+                doneBtn.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

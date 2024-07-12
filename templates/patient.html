@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>Patient</title>
+    <link rel="stylesheet" href="../static/css/user.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+<div  name="shaimaa2">
+
+    <div class="btn1" id="show111">
+        <input type="submit" value="Form"   style="position: relative;
+        z-index: 1000;
+        bottom: 167px;
+        left: 231px;
+        width: 68px;
+        padding: 7px;
+        text-align: center;
+        outline: none;
+        color: white;
+        font-weight: bold;
+        background-color: var(--bblue);
+        border: none;
+        font-size: 15px;
+        letter-spacing: 1px;
+        border-radius: 10px;
+        background: var(--bblue);
+        transition: all 0.3s ease-in-out;">
+    </div>
+ 
+    <div class="wrapper11" id="hidden111">
+        <i class='bx bx-x' class="hide111" id="hide111"></i>
+        <h3>Rate US</h3>
+        <form action="#">
+        <div class="rating">
+        <input type="number" name="rating" hidden>
+        <i class='bx bx-star star' style="--i: 0;"></i>
+        <i class='bx bx-star star' style="--i: 1;"></i>
+        <i class='bx bx-star star' style="--i: 2;"></i>
+        <i class='bx bx-star star' style="--i: 3;"></i>
+        <i class='bx bx-star star' style="--i: 4;"></i>
+        </div>
+        <textarea name="opinion" cols="30" rows="5" placeholder="Your opinion..."></textarea>
+        <div class="btn-group">
+        <button type="submit" class="btn submit">Submit</button>
+
+        </div>
+        </form> 
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="image2" id="hidden2" style="display: none;  
+    position: absolute;
+    z-index: 100;
+    left: 510px;
+    top: 162px;">
+
+        <div class="slider-container">
+            <i class='bx bx-x' id="hide2"></i>
+            <div class="slides">
+                <!-- Slides will be dynamically added here -->
+            </div>
+            <div class="controls">
+                <button class="control-btn" onclick="previousSlide()">Previous</button>
+                <button class="control-btn" onclick="nextSlide()">Next</button>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="container" id="main">
+
+
+
+
+
+
+        <div class="header">
+            <div class="one">
+                <img src="../static/img/logo.png" alt="logo" width="120px" height="120px">
+            </div>
+            
+            <div class="two">
+                <a href="#" class="a">{{data.get('fname')+' '+data.get('lname')}}</a>
+                <ul class="dropdown">
+                    <li><a href="#" id="show22" style=" text-decoration: none; color: black;">My account</a></li>
+                    <li><a href="logoutpatient" style=" text-decoration: none; color: black;">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <form action="/online_patient" method="post">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+
+            <div class="main">
+                <div class="form-wrapper right">
+                    <div class="title">Make An Appointment</div>
+                    <div class="detail">
+                        <label for="techSelect">Organ</label>
+                        <select id="techSelect" name="organ">
+                            <!-- Options will be dynamically populated -->
+                        </select>
+                    </div>
+                    <div class="detail">
+                        <label for="modalitySelect">Device</label>
+                        <select id="modalitySelect" name="modality">
+                            <!-- Options will be dynamically populated -->
+                        </select>
+                    </div>
+                    <div class="detail">
+                        <label for="locationSelect">Location</label>
+                        <select id="locationSelect" name="branch_name">
+                            <!-- Options will be dynamically populated -->
+                        </select>
+                    </div>
+                    <div class="input_box">
+                        <span class="details">Date</span>
+                        <input type="datetime-local" id="appointmentDate" name="datetime">
+                    </div>
+                    <div class="btn">
+                        <input type="submit" value="Done">
+                    </div>
+        </form>        
+                    <div class="prev">
+                        <p>See Your previous Appointment <a href="#" class="left1">Show me</a></p>
+                    </div>
+                </div>
+                <div class="form-wrapper left">
+                    <div class="table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Organ</th>
+                                    <th>Modality</th>
+                                    <th>Branch</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Scan</th>
+                                    <th>Report</th>
+                                </tr>
+                            </thead>
+                            <tbody id="patientTableBody">
+                                <!-- Content will be dynamically populated -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="prev1">
+                        <p>Make an Appointment <a href="#" class="left11">Return me Back</a></p>
+                    </div>
+                </div>
+            </div>
+        
+
+            <div id="hidden22" class="account">
+                <i class='bx bx-x' id="hide22"></i>
+
+    
+                <div class="editable-text-container">
+                    <div class="input_box">
+                        <span class="details">Name</span>
+                        <span class="display-text">{{data.get('fname') +' '+ data.get('lname')}}</span></div>
+                    <input type="text" class="input-field">
+                    <span class="edit-btn">Edit</span>
+                    <span class="done-btn" style="display:none;">Done</span>
+                </div>
+                
+                <div class="editable-text-container">
+                    <div class="input_box">
+                        <span class="details">ID</span>
+                        <span class="display-text">{{data.get('patient_ssn')}}</span></div>
+                    <input type="text" class="input-field">
+                    <span class="edit-btn">Edit</span>
+                    <span class="done-btn" style="display:none;">Done</span>
+                </div>
+                
+                <div class="editable-text-container">
+                    <div class="input_box">
+                        <span class="details">Email</span>
+                        <span class="display-text">{{data.get('email')}}</span></div>
+                    <input type="text" class="input-field">
+                    <span class="edit-btn">Edit</span>
+                    <span class="done-btn" style="display:none;">Done</span>
+                </div>
+    
+                <div class="editable-text-container">
+                    <div class="input_box">
+                        <span class="details">Password</span>
+                        <span  class="display-text"></span></div>
+                    <input type="password" class="input-field">
+                    <span class="edit-btn">Edit</span>
+                    <span class="done-btn" style="display:none;">Done</span>
+                </div>
+    
+                
+                <div class="editable-text-container">
+                    <div class="input_box">
+                        <span class="details">Age</span>
+                        <span class="display-text">{{data.get('age')}}</span></div>
+                    <input type="text" class="input-field">
+                    <span class="edit-btn">Edit</span>
+                    <span class="done-btn" style="display:none;">Done</span>
+                </div>
+                
+                <div class="editable-text-container">
+                    <div class="input_box">
+                        <span class="details">Phone Number</span>
+                        <span class="display-text">{{data.get('phone_number')}}</span></div>
+                    <input type="text" class="input-field">
+                    <span class="edit-btn">Edit</span>
+                    <span class="done-btn" style="display:none;">Done</span>
+                </div>
+    
+                <div class="editable-text-container">
+                    <div class="input_box">
+                        <span class="details">Address</span>
+                        <span class="display-text">{{data.get('address_home_no')+' '+data.get('address_street')+' '+data.get('address_city')    }}</span></div>
+                    <input type="text" class="input-field">
+                    <span class="edit-btn">Edit</span>
+                    <span class="done-btn" style="display:none;">Done</span>
+                </div>
+    
+                <!-- <div class="editable-text-container">
+                    <div class="input_box">
+                        <span class="details">Salary</span>
+                        <span class="display-text">{{data.get('salary')}}</span></div>
+                    <input type="text" class="input-field">
+                    <span class="edit-btn">Edit</span>
+                    <span class="done-btn" style="display:none;">Done</span>
+                </div>
+    
+                
+                <div class="editable-text-container">
+                    <div class="input_box">
+                        <span class="details">Start Shift</span>
+                        <span class="display-text">{{data.get('start_shift')}}</span></div>
+                    <input type="text" class="input-field">
+                    <span class="edit-btn">Edit</span>
+                    <span class="done-btn" style="display:none;">Done</span>
+                </div>
+                
+                <div class="editable-text-container">
+                    <div class="input_box">
+                        <span class="details">End Shift</span>
+                        <span class="display-text">{{data.get('end_shift')}}</span></div>
+                    <input type="text" class="input-field">
+                    <span class="edit-btn">Edit</span>
+                    <span class="done-btn" style="display:none;">Done</span>
+                </div>
+
+
+                <div class="editable-text-container">
+                    <div class="input_box">
+                        <span class="details">Payment</span>
+                        <span class="display-text">{{data.get('payment')}}</span></div>
+                    <input type="text" class="input-field">
+                    <span class="edit-btn">Edit</span>
+                    <span class="done-btn" style="display:none;">Done</span>
+                </div> -->
+                
+    
+    
+                <!-- <div class="shift">
+                    <div class="select">
+                        <div
+                          class="selected"
+                          data-default="Start Shift"
+                          data-one="8:00 am"
+                          data-two="6:00 pm"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="1em"
+                            viewBox="0 0 512 512"
+                            class="arrow"
+                          >
+                            <path
+                              d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+                            ></path>
+                          </svg>
+                        </div>
+                        <div class="options">
+                          <div title="Start Shift">
+                            <input id="all" name="option" type="radio" checked="" />
+                            <label class="option" for="all" data-txt="Start Shift"></label>
+                          </div>
+                          <div title="8:00 am">
+                            <input id="option-1" name="option" type="radio" />
+                            <label class="option" for="option-1" data-txt="8:00 am"></label>
+                          </div>
+                          <div title="6:00 pm">
+                            <input id="option-2" name="option" type="radio" />
+                            <label class="option" for="option-2" data-txt="6:00 pm"></label>
+                          </div>
+                        </div>
+                    </div>
+    
+                    <div class="select1">
+                        <div
+                          class="selected1"
+                          data-default="End Shift"
+                          data-one="4:00 pm"
+                          data-two="12:00 am"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="1em"
+                            viewBox="0 0 512 512"
+                            class="arrow1"
+                          >
+                            <path
+                              d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+                            ></path>
+                          </svg>
+                        </div>
+                        <div class="options1">
+                          <div title="End Shift">
+                            <input id="all1" name="option1" type="radio" checked="" />
+                            <label class="option1" for="all1" data-txt="End Shift"></label>
+                          </div>
+                          <div title="4:00 pm">
+                            <input id="option-11" name="option1" type="radio" />
+                            <label class="option1" for="option-11" data-txt="4:00 pm"></label>
+                          </div>
+                          <div title="12:00 am">
+                            <input id="option-21" name="option1" type="radio" />
+                            <label class="option1" for="option-21" data-txt="12:00 am"></label>
+                          </div>
+                        </div>
+                    </div>
+                </div> -->
+    
+                
+                <div class="radio-container">
+                    <div class="radio-wrapper">
+                      <label class="radio-button">
+                        <input id="option1" name="radio-group" type="radio"  value="Female" {% if data.get('gender') == 'F' %}checked{% endif %}>
+                        <span class="radio-checkmark"></span>
+                        <span class="radio-label">Female</span>
+                      </label>
+                    </div>
+                  
+                    <div class="radio-wrapper">
+                      <label class="radio-button">
+                        <input id="option2" name="radio-group" type="radio"  value="Male" {% if data.get('gender') == 'M' %}checked{% endif %}>
+                        <span class="radio-checkmark"></span>
+                        <span class="radio-label">Male</span>
+                      </label>
+                    </div>
+                </div>
+
+    <!-- Include the JavaScript files -->
+    <script src="https://kit.fontawesome.com/8fdfd2bc9a.js" crossorigin="anonymous"></script>
+    <script src="../static/JS/patient.js"></script>
+    <script>
+        
+        document.querySelectorAll('.edit-btn').forEach((btn, index) => {
+            btn.addEventListener('click', function() {
+                const container = btn.parentElement;
+                const displayText = container.querySelector('.display-text');
+                const inputField = container.querySelector('.input-field');
+                const editBtn = container.querySelector('.edit-btn');
+                const doneBtn = container.querySelector('.done-btn');
+                
+                inputField.value = displayText.innerText;
+                displayText.style.display = 'none';
+                inputField.style.display = 'inline';
+                editBtn.style.display = 'none';
+                doneBtn.style.display = 'inline';
+            });
+        });
+
+        document.querySelectorAll('.done-btn').forEach((btn, index) => {
+            btn.addEventListener('click', function() {
+                const container = btn.parentElement;
+                const displayText = container.querySelector('.display-text');
+                const inputField = container.querySelector('.input-field');
+                const editBtn = container.querySelector('.edit-btn');
+                const doneBtn = container.querySelector('.done-btn');
+                
+                displayText.innerText = inputField.value;
+                displayText.style.display = 'inline';
+                inputField.style.display = 'none';
+                editBtn.style.display = 'inline';
+                doneBtn.style.display = 'none';
+            });
+        });
+    </script>
+
+
+<script>
+    let slideIndex = 0;
+
+    // Function to update the image slider with new image URLs
+    function updateImageSlider(imageUrls) {
+        const slidesContainer = document.querySelector('.slides');
+        slidesContainer.innerHTML = '';
+
+        imageUrls.forEach(imageUrl => {
+            const slide = document.createElement('div');
+            slide.classList.add('slide');
+            slide.innerHTML = `<img src="${imageUrl}" alt="Uploaded Image">`;
+            slidesContainer.appendChild(slide);
+        });
+
+        // Reset slideIndex to the first slide after updating
+        slideIndex = 0;
+        showSlide(slideIndex);
+    }
+
+    // Function to show a specific slide by index
+    function showSlide(index) {
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        if (totalSlides > 0) {
+            if (index < 0) {
+                slideIndex = totalSlides - 1;
+            } else if (index >= totalSlides) {
+                slideIndex = 0;
+            } else {
+                slideIndex = index;
+            }
+
+            const slideWidth = slides[slideIndex].offsetWidth;
+            document.querySelector('.slides').style.transform = `translateX(-${slideIndex * slideWidth}px)`;
+        }
+    }
+
+    // Function to show the next slide
+    function nextSlide() {
+        showSlide(slideIndex + 1);
+    }
+
+    // Function to show the previous slide
+    function previousSlide() {
+        showSlide(slideIndex - 1);
+    }   
+
+</script>
+
+
+
+
+<script>
+    document.getElementById("hide2").addEventListener("click", function () {
+        document.getElementById("hidden2").style.display = "none";
+    });
+</script>
+
+
+<script>
+    document.getElementById("show22").addEventListener("click", function () {
+                document.getElementById("hidden22").style.display = "block";
+            });
+            document.getElementById("hide22").addEventListener("click", function () {
+                document.getElementById("hidden22").style.display = "none";
+            });
+</script>
+
+
+
+<script>
+    document.getElementById("show111").addEventListener("click", function () {
+                document.getElementById("hidden111").style.display = "block";
+            });
+            document.getElementById("hide111").addEventListener("click", function () {
+                document.getElementById("hidden111").style.display = "none";
+            });
+</script>
+
+
+
+
+
+
+<script>
+    const left11 = document.querySelector('.left11');
+    const left1 = document.querySelector('.left1');
+    const main = document.querySelector('.main');
+
+    left1.addEventListener('click', () => {
+        main.classList.toggle('active');
+    });
+
+    left11.addEventListener('click', () => {
+        main.classList.toggle('active');
+    });
+</script>

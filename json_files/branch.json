@@ -1,0 +1,11 @@
+[{
+    "headers": {
+        "branch": ["Branch Name", "ID", "Location", "Phone", "Manager"]
+    },
+    "data": {
+        "branch": [
+            { "branchName": "Main Branch", "id": "B001", "location": "Downtown", "phone": "555-1111", "manager": "Alice Smith" },
+        { "branchName": "West Branch", "id": "B002", "location": "Uptown", "phone": "555-2222", "manager": "Bob Johnson" }
+        ]
+    }
+} ]

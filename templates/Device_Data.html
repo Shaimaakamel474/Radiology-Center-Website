@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Data</title>
+    <link rel="stylesheet" href="../static/css/admin.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="contanier">
+
+        <div class="first">
+
+            <div class="one">
+                <img src="../static/img/logo.png" alt="logo" width="120px" height="120px">
+            </div>
+            <div class="two">
+                <a href="#" class="a">Rana Essam</a>
+                <ul class="dropdown">
+                    <li><a href="#" id="show1" style=" text-decoration: none; color: black;">My account</a></li>
+                    <li><a href="#" style=" text-decoration: none; color: black;">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="second">
+            <div class="search device_bar">
+                <div class="bars">
+                    <h4>DateRRR:</h4>
+                    <label class="container">
+                        <input type="text" placeholder="Enter the Study Date" name="srh_date">
+                    </label>
+                </div>
+                <div class="bars">
+                    <h4>Patient SSN:</h4>
+                    <label><input type="text" placeholder="Enter the ID of the Patient" name="srh_pssn"></label>
+                </div>
+                <div class="bars">
+                    <h4>Branch:</h4>
+                    <input type="text" placeholder="Enter the Branch" name="srh_branch">
+                </div>
+                <div class="bars">
+                    <h4>Modality:</h4>
+                    <label><input type="text" placeholder="Enter the Modality" name="srh_modality"></label>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="three">
+            <div class="table-container" id="deviceTableContainer">
+                <table class="styled-table">
+                    <h1 id="tableTitle">Devices Data</h1>
+                    <a href="#" id="show"><i class='bx bx-folder-plus' style="padding: 16px 0 0 0px;"></i></a>
+                    <thead>
+                        <tr>
+                            <th>Device Name</th>
+                            <th>Device SN</th>
+                            <th>Technique</th>
+                            <th>Branch</th>
+                            <th>Preventive Maintenance</th>
+                            <th>Corrective Maintenance</th>
+                            <th>Number of MalFunctions</th>
+                            <th>Installition Date</th>
+                            <th>Technique</th>
+                            <th>Warranty Data</th>
+                        </tr>
+                    </thead>
+                    <tbody id="deviceTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="four">
+            <div class="add" id="hidden">
+                <form action="/" method="post">
+                    <i class='bx bx-x' id="hide"></i>
+                    <div class="container2" >
+                        <div class="left">
+        
+                            <div class="detail">
+                                <span class="span">Device Name</span>
+                                <input name="name" type="text" placeholder="Enter the Name of the Patient">
+                            </div>
+        
+        
+                            <div class="detail">
+                                <span class="span">Device SSN</span>
+                                <input name="patient_ssn" type="text" placeholder="Enter The Patient SSN">
+                            </div>
+        
+                            <div class="detail">
+                                <span class="span">Device Branch</span>
+                                <input name="age" type="text" placeholder="Enter The Age">
+                            </div>
+        
+        
+                            <div class="detail">
+                                <span class="span">Data1</span>
+                                <input name="address" type="text" placeholder="Enter the city ">
+                            </div>
+        
+                            <div class="detail">
+                                <span class="span">Data2</span>
+                                <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                            </div>
+        
+                            <div class="detail">
+                                <span class="span">Data3</span>
+                                <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                            </div>
+        
+        
+        
+                            <div class="button">
+                                <input type="submit" value="add" >
+                            </div>
+        
+        
+                        </div>
+                    </div>
+        
+                </form>
+              </div>
+        </div>
+
+
+    </div>
+
+    <script>
+        document.getElementById("show").addEventListener("click", function () {
+                    document.getElementById("hidden").style.display = "block";
+                });
+                document.getElementById("hide").addEventListener("click", function () {
+                    document.getElementById("hidden").style.display = "none";
+                });
+                
+    </script>
+</body>
+</html>

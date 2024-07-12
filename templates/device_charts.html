@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Device Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include Moment.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <!-- Include Chart.js adapter for Moment.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment"></script>
+    <link rel="stylesheet" href="../static/css/rad.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <h1>Device Dashboard</h1>
+
+
+
+
+
+
+
+
+
+
+    <div class="contanier" id="main">
+
+        <div class="chart">
+            <canvas id="numMalfunctionsChart" width="600" height="400"></canvas>
+            <canvas id="maintenancePerDeviceChart" width="600" height="400"></canvas>
+            <canvas id="monthlyInstallationCountChart" width="600" height="400"></canvas>
+            <canvas id="warrantyExpiryChart" width="600" height="400"></canvas>
+            
+
+            <div class="prev">
+                <p>See The Device Data <a href="#" class="left1">Show me</a></p>
+            </div>
+        </div>
+
+        <div class="data">
+            <div class="first">
+
+                <div class="one">
+                    <img src="../static/img/logo.png" alt="logo" width="120px" height="120px">
+                </div>
+                <div class="two">
+                    <a href="#" class="a">Rana Essam</a>
+                    <ul class="dropdown">
+                        <li><a href="#" id="show1" style=" text-decoration: none; color: black;">My account</a></li>
+                        <li><a href="#" style=" text-decoration: none; color: black;">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+    
+            <div class="second">
+                <div class="search device_bar">
+                    <div class="bars">
+                        <h4>DateRRR:</h4>
+                        <label class="container">
+                            <input type="text" placeholder="Enter the Study Date" name="srh_date">
+                        </label>
+                    </div>
+                    <div class="bars">
+                        <h4>Patient SSN:</h4>
+                        <label><input type="text" placeholder="Enter the ID of the Patient" name="srh_pssn"></label>
+                    </div>
+                    <div class="bars">
+                        <h4>Branch:</h4>
+                        <input type="text" placeholder="Enter the Branch" name="srh_branch">
+                    </div>
+                    <div class="bars">
+                        <h4>Modality:</h4>
+                        <label><input type="text" placeholder="Enter the Modality" name="srh_modality"></label>
+                    </div>
+                </div>
+    
+            </div>
+    
+            <div class="three">
+                <div class="table-container" id="deviceTableContainer">
+                    <table class="styled-table">
+                        <h1 id="tableTitle">Devices Data</h1>
+                        <a href="#" id="show"><i class='bx bx-folder-plus' style="padding: 16px 0 0 0px;"></i></a>
+                        <thead>
+                            <tr>
+                                <th>Device Name</th>
+                                <th>Device SN</th>
+                                <th>Technique</th>
+                                <th>Branch</th>
+                                <th>Preventive Maintenance</th>
+                                <th>Corrective Maintenance</th>
+                                <th>Number of MalFunctions</th>
+                                <th>Installition Date</th>
+                                <th>Technique</th>
+                                <th>Warranty Data</th>
+                            </tr>
+                        </thead>
+                        <tbody id="deviceTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+    
+            <div class="four">
+                <div class="add" id="hidden">
+                    <form action="/" method="post">
+                        <i class='bx bx-x' id="hide"></i>
+                        <div class="container2" >
+                            <div class="left">
+            
+                                <div class="detail">
+                                    <span class="span">Device Name</span>
+                                    <input name="name" type="text" placeholder="Enter the Name of the Patient">
+                                </div>
+            
+            
+                                <div class="detail">
+                                    <span class="span">Device SSN</span>
+                                    <input name="patient_ssn" type="text" placeholder="Enter The Patient SSN">
+                                </div>
+            
+                                <div class="detail">
+                                    <span class="span">Device Branch</span>
+                                    <input name="age" type="text" placeholder="Enter The Age">
+                                </div>
+            
+            
+                                <div class="detail">
+                                    <span class="span">Data1</span>
+                                    <input name="address" type="text" placeholder="Enter the city ">
+                                </div>
+            
+                                <div class="detail">
+                                    <span class="span">Data2</span>
+                                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                                </div>
+            
+                                <div class="detail">
+                                    <span class="span">Data3</span>
+                                    <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                                </div>
+            
+            
+            
+                                <div class="button">
+                                    <input type="submit" value="add" >
+                                </div>
+            
+            
+                            </div>
+                        </div>
+            
+                    </form>
+                  </div>
+            </div>
+
+
+
+
+
+            <div class="prev1">
+                <p>See The Statistics <a href="#" class="left11">Return Back</a></p>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        const left11 = document.querySelector('.left11');
+        const left1 = document.querySelector('.left1');
+        const main = document.querySelector('.main');
+    
+        left1.addEventListener('click', () => {
+            main.classList.toggle('active');
+        });
+    
+        left11.addEventListener('click', () => {
+            main.classList.toggle('active');
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        // Fetch and render Number of Malfunctions per Device
+        fetch('/num_malfunctions_per_device')
+            .then(response => response.json())
+            .then(data => {
+                const labels = data.map(device => device.device_name);
+                const values = data.map(device => device.num_malfunctions);
+
+                const ctx = document.getElementById('numMalfunctionsChart').getContext('2d');
+                ctx.canvas.width = 300;
+                ctx.canvas.height = 200;
+
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Number of Malfunctions',
+                            data: values,
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching number of malfunctions:', error);
+            });
+
+        // Fetch and render Maintenance Types per Device
+        fetch('/api/maintenance_per_device')
+            .then(response => response.json())
+            .then(data => {
+                const labels = data.map(device => device.device_name);
+                const corrective = data.map(device => device.corrective_maintenance);
+                const preventative = data.map(device => device.preventative_maintenance);
+
+                const ctx = document.getElementById('maintenancePerDeviceChart').getContext('2d');
+                ctx.canvas.width = 400;
+                ctx.canvas.height = 200;
+
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Corrective Maintenance',
+                            data: corrective,
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1
+                        }, {
+                            label: 'Preventative Maintenance',
+                            data: preventative,
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching maintenance data:', error);
+            });
+
+        // Fetch and render Monthly Installation Count
+        fetch('/installation_date_distribution')
+            .then(response => response.json())
+            .then(data => {
+                const labels = data.map(installation => installation.month_year_label);
+                const counts = data.map(installation => installation.installation_count);
+
+                const ctx = document.getElementById('monthlyInstallationCountChart').getContext('2d');
+                ctx.canvas.width = 400;
+                ctx.canvas.height = 200;
+
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Monthly Installation Count',
+                            data: counts,
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching monthly installation count:', error);
+            });
+
+        // Fetch and render Devices Near Warranty Expiry
+        document.addEventListener('DOMContentLoaded', function() {
+    fetch('/api/devices_near_warranty_expiry')
+        .then(response => response.json())
+        .then(data => {
+            // Extract labels (device names) and data (warranty expiry dates)
+            const labels = data.map(device => device.device_name);
+            const values = data.map(device => ({
+                x: device.device_name,
+                y: new Date(device.warrantyexpirydate)
+            }));
+
+            // Get the canvas element where the chart will be rendered
+            const ctx = document.getElementById('warrantyExpiryChart').getContext('2d');
+
+            // Create a new Chart instance
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Warranty Expiry Date',
+                        data: values,
+                        backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                        borderColor: 'rgba(255, 159, 64, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Devices'
+                            }
+                        },
+                        y: {
+                            type: 'time',
+                            time: {
+                                unit: 'year'
+                            },
+                            title: {
+                                display: true,
+                                text: 'Warranty Expiry Date'
+                            },
+                            min: '2020-01-01',  // Set the minimum date
+                            max: '2030-12-31',  // Set the maximum date
+                            ticks: {
+                                source: 'data'
+                            }
+                        }
+                    }
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching devices data:', error);
+        });
+});
+    </script>
+
+<script>
+    document.getElementById("show").addEventListener("click", function () {
+                document.getElementById("hidden").style.display = "block";
+            });
+            document.getElementById("hide").addEventListener("click", function () {
+                document.getElementById("hidden").style.display = "none";
+            });
+            
+</script>
+</body>
+</html>

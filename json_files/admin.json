@@ -1,0 +1,32 @@
+{
+    "headers": {
+        "doctor": ["Name", "ID", "Specialty", "Branch", "Phone", "Email"],
+        "radiologist": ["Name", "ID", "Organ", "Modality", "Branch", "Date"],
+        "clinicalEngineer": ["Name", "ID", "Device", "Location", "Phone", "Email"],
+        "employee": ["Name", "Job Title", "ID", "Email", "Age", "Gender", "Phone Number", "Salary"],
+        "patient": ["Name", "ID", "Gender", "Age", "Phone", "Diagnosis"]
+    },
+    "data": {
+        "doctor": [
+            { "name": "Dr. Smith", "id": "D001", "specialty": "Cardiology", "branch": "Main", "phone": "123-456-7890", "email": "dr.smith@example.com" },
+            { "name": "Dr. Adams", "id": "D002", "specialty": "Neurology", "branch": "West", "phone": "098-765-4321", "email": "dr.adams@example.com" }
+        ],
+        "radiologist": [
+            { "name": "Dr. Williams", "id": "R001", "organ": "Brain", "modality": "MRI", "branch": "East", "date": "2024-06-14" },
+            { "name": "Dr. Taylor", "id": "R002", "organ": "Lung", "modality": "CT", "branch": "South", "date": "2024-06-15" }
+        ],
+        "clinicalEngineer": [
+            { "name": "Alice Johnson", "id": "CE001", "device": "X-Ray Machine", "location": "Main", "phone": "555-1234", "email": "alice.j@example.com" },
+            { "name": "Bob Lee", "id": "CE002", "device": "Ultrasound", "location": "West", "phone": "555-5678", "email": "bob.l@example.com" }
+        ],
+        "employee": [
+            { "name": "John Doe", "jobTitle": "Manager", "id": "E001", "email": "john.d@example.com", "age": 35, "gender": "Male", "phoneNumber": "555-7890", "salary": "$50,000" },
+            { "name": "Jane Smith", "jobTitle": "Clerk", "id": "E002", "email": "jane.s@example.com", "age": 28, "gender": "Female", "phoneNumber": "555-2345", "salary": "$40,000" }
+        ],
+        "patient": [
+            { "name": "Mary Johnson", "id": "P001", "gender": "Female", "age": 60, "phone": "555-3456", "diagnosis": "Hypertension" },
+            { "name": "James Brown", "id": "P002", "gender": "Male", "age": 45, "phone": "555-6789", "diagnosis": "Diabetes" }
+        ]
+
+    }
+}

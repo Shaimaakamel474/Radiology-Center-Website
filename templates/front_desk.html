@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>Front Desk</title>
+    <link rel="stylesheet" href="../static/css/front_desk.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+    <!-- this is how to pull -->
+    <div class="contanier">
+        <div class="first">
+
+            <div class="one">
+                <img src="../static/img/logo.png" alt="logo" width="120px" height="120px">
+            </div>
+        <div class="shaimaa">
+            <div class="two">
+                <a href="#" class="a">{{data.get('fname')}}</a>  
+                <ul class="dropdown">
+                    <li><a href="#" id="show1" style=" text-decoration: none; color: black;">My account</a></li>
+                    <li><a href="logoutfront" style=" text-decoration: none; color: black;">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+        </div>
+
+        <div class="second">
+            <div class="bars">
+                <h4>Date:</h4>
+                <label class="container">
+                    <input type="text" placeholder="Enter the Study Date" name="srh_date">
+
+                </label>
+
+
+            </div>
+
+            <div class="bars">
+                <h4>Patient SSN:</h4>
+                <label for=""><input type="text" placeholder="Enter the ID of the Patient" name="srh_pssn">
+
+                </label>
+            </div>
+
+            <div class="bars">
+                <h4>Branch:</h4>
+                <input type="text" placeholder="Enter the Branch" name="srh_branch">
+            </div>
+
+            <div class="bars">
+                <h4>Modality:</h4>
+                <label for="">
+                    <input type="text" placeholder="Enter the Modality" name="srh_modality">
+                </label>
+            </div>
+
+            <a href="#" id="show"><i class='bx bx-folder-plus' style="padding: 16px 0 0 0px;"></i></a>
+
+            
+
+
+
+
+            <button id="button1" onclick="fetchData('today_app')">today_app</button>
+            <button id="button2" onclick="fetchData('next_app')">next_app</button>
+            <button id="button3" onclick="fetchData('previous_app')">pervious_app</button>
+            <button id="button4" onclick="fetchData('all_app')">all_app</button>
+
+
+
+
+            
+            
+            
+            <div class="add" id="hidden">
+                <form action="/offline_patient" method="post">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+                    <!-- herrreee formmm for data_patientt -->
+                    <i class='bx bx-x' id="hide"></i>
+                    <div class="container2" >
+                        <div class="left">
+
+                            <div class="detail">
+                                <span class="span">Patient Name</span>
+                                <input name="name" type="text" placeholder="Enter the Name of the Patient">
+                            </div>
+
+
+                            <div class="detail">
+                                <span class="span">Patient SSN</span>
+                                <input name="patient_ssn" type="text" placeholder="Enter The Patient SSN">
+                            </div>
+
+                            <div class="detail">
+                                <span class="span">Age</span>
+                                <input name="age" type="text" placeholder="Enter The Age">
+                            </div>
+
+
+                            <div class="detail">
+                                <span class="span">Patient Address </span>
+                                <input name="address" type="text" placeholder="Enter the city ">
+                            </div>
+
+                            <div class="detail">
+                                <span class="span">Patient Phone Number</span>
+                                <input name="phone_number" type="text" placeholder="Enter the Phone Number">
+                            </div>
+
+                            <div class="radio-container">
+                                <div class="radio-wrapper">
+                                  <label class="radio-button">
+                                    <input id="option1" name="gender" value="M" type="radio">
+                                    <span class="radio-checkmark"></span>
+                                    <span class="radio-label">Male</span>
+                                  </label>
+                                </div>
+                              
+                                <div class="radio-wrapper">
+                                  <label class="radio-button">
+                                    <input id="option2" name="gender" value="F" type="radio">
+                                    <span class="radio-checkmark"></span>
+                                    <span class="radio-label">Female</span>
+                                  </label>
+                                </div>
+                              </div>
+
+
+
+                            <div class="detail">
+                                <label for="techSelect">Organ</label>
+                                <select id="techSelect" name="organ">
+                                    <!-- Options will be dynamically populated -->
+                                </select>
+                            </div>
+                            
+                            <div class="detail">
+                                <label for="modalitySelect">Device</label>
+                                <select id="modalitySelect" name="modality">
+                                    <!-- Options will be dynamically populated -->
+                                </select>
+                            </div>
+                            
+                            <div class="detail">
+                                <label for="locationSelect">Location</label>
+                                <select id="locationSelect" name="branch_name">
+                                    <!-- Options will be dynamically populated -->
+                                </select>
+                            </div>
+
+
+                            <div class="detail">
+                                <span class="span">Date</span>
+                                <input name="datetime" type="datetime-local" id="appointmentDate" placeholder="Enter The Date">
+                            </div>
+
+
+                            <div class="button">
+                                <input type="submit" value="add" >
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+
+        </div>
+
+        <div class="contanier3">
+            <div class="third">
+                <div class="table">
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th class="th">Patient Name</th>
+                                <th>ID</th>
+                                <th>Gender</th>
+                                <th>Age</th>
+                                <th>Phone Number</th>
+                                <th>Organ</th>
+                                <th>Modality</th>
+                                <th>Branch</th>
+                                <th>Date</th>
+                                <th>Payment</th>
+                                <th><i class='bx bx-add-to-queue'></i></th>
+                                <th><i class='bx bx-user-x'></i></th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody id="patientTableBody">
+                        </tbody>
+
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+
+        
+        
+              
+
+              
+
+        <div id="hidden1" class="account">
+          <i class='bx bx-x' id="hide1"></i>
+
+
+          <div class="editable-text-container">
+              <div class="input_box">
+                  <span class="details">Name</span>
+                  <span class="display-text">{{data.get('fname') +' '+ data.get('lname')}}</span></div>
+              <input type="text" class="input-field">
+              <span class="edit-btn">Edit</span>
+              <span class="done-btn" style="display:none;">Done</span>
+          </div>
+          
+          <div class="editable-text-container">
+              <div class="input_box">
+                  <span class="details">ID</span>
+                  <span class="display-text">{{data.get('employee_id')}}</span></div>
+              <input type="text" class="input-field">
+              <span class="edit-btn">Edit</span>
+              <span class="done-btn" style="display:none;">Done</span>
+          </div>
+          
+          <div class="editable-text-container">
+              <div class="input_box">
+                  <span class="details">Email</span>
+                  <span class="display-text">{{data.get('email')}}</span></div>
+              <input type="text" class="input-field">
+              <span class="edit-btn">Edit</span>
+              <span class="done-btn" style="display:none;">Done</span>
+          </div>
+
+          <div class="editable-text-container">
+              <div class="input_box">
+                  <span class="details">Password</span>
+                  <span  class="display-text"></span></div>
+              <input type="password" class="input-field">
+              <span class="edit-btn">Edit</span>
+              <span class="done-btn" style="display:none;">Done</span>
+          </div>
+
+          
+          <div class="editable-text-container">
+              <div class="input_box">
+                  <span class="details">Age</span>
+                  <span class="display-text">{{data.get('age')}}</span></div>
+              <input type="text" class="input-field">
+              <span class="edit-btn">Edit</span>
+              <span class="done-btn" style="display:none;">Done</span>
+          </div>
+          
+          <div class="editable-text-container">
+              <div class="input_box">
+                  <span class="details">Phone Number</span>
+                  <span class="display-text">{{data.get('phone_number')}}</span></div>
+              <input type="text" class="input-field">
+              <span class="edit-btn">Edit</span>
+              <span class="done-btn" style="display:none;">Done</span>
+          </div>
+
+          <div class="editable-text-container">
+              <div class="input_box">
+                  <span class="details">Address</span>
+                  <span class="display-text">{{data.get('address_home_no')+' '+data.get('address_street')+' '+data.get('address_city')    }}</span></div>
+              <input type="text" class="input-field">
+              <span class="edit-btn">Edit</span>
+              <span class="done-btn" style="display:none;">Done</span>
+          </div>
+
+          <div class="editable-text-container">
+              <div class="input_box">
+                  <span class="details">Salary</span>
+                  <span class="display-text">{{data.get('salary')}}</span></div>
+              <input type="text" class="input-field">
+              <span class="edit-btn">Edit</span>
+              <span class="done-btn" style="display:none;">Done</span>
+          </div>
+
+          
+          <div class="editable-text-container">
+              <div class="input_box">
+                  <span class="details">Start Shift</span>
+                  <span class="display-text">{{data.get('start_shift')}}</span></div>
+              <input type="text" class="input-field">
+              <span class="edit-btn">Edit</span>
+              <span class="done-btn" style="display:none;">Done</span>
+          </div>
+          
+          <div class="editable-text-container">
+              <div class="input_box">
+                  <span class="details">End Shift</span>
+                  <span class="display-text">{{data.get('end_shift')}}</span></div>
+              <input type="text" class="input-field">
+              <span class="edit-btn">Edit</span>
+              <span class="done-btn" style="display:none;">Done</span>
+          </div>
+
+
+          <div class="editable-text-container">
+              <div class="input_box">
+                  <span class="details">Payment</span>
+                  <span class="display-text">{{data.get('payment')}}</span></div>
+              <input type="text" class="input-field">
+              <span class="edit-btn">Edit</span>
+              <span class="done-btn" style="display:none;">Done</span>
+          </div>
+          
+
+
+          <!-- <div class="shift">
+              <div class="select">
+                  <div
+                    class="selected"
+                    data-default="Start Shift"
+                    data-one="8:00 am"
+                    data-two="6:00 pm"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="1em"
+                      viewBox="0 0 512 512"
+                      class="arrow"
+                    >
+                      <path
+                        d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div class="options">
+                    <div title="Start Shift">
+                      <input id="all" name="option" type="radio" checked="" />
+                      <label class="option" for="all" data-txt="Start Shift"></label>
+                    </div>
+                    <div title="8:00 am">
+                      <input id="option-1" name="option" type="radio" />
+                      <label class="option" for="option-1" data-txt="8:00 am"></label>
+                    </div>
+                    <div title="6:00 pm">
+                      <input id="option-2" name="option" type="radio" />
+                      <label class="option" for="option-2" data-txt="6:00 pm"></label>
+                    </div>
+                  </div>
+              </div>
+
+              <div class="select1">
+                  <div
+                    class="selected1"
+                    data-default="End Shift"
+                    data-one="4:00 pm"
+                    data-two="12:00 am"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="1em"
+                      viewBox="0 0 512 512"
+                      class="arrow1"
+                    >
+                      <path
+                        d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div class="options1">
+                    <div title="End Shift">
+                      <input id="all1" name="option1" type="radio" checked="" />
+                      <label class="option1" for="all1" data-txt="End Shift"></label>
+                    </div>
+                    <div title="4:00 pm">
+                      <input id="option-11" name="option1" type="radio" />
+                      <label class="option1" for="option-11" data-txt="4:00 pm"></label>
+                    </div>
+                    <div title="12:00 am">
+                      <input id="option-21" name="option1" type="radio" />
+                      <label class="option1" for="option-21" data-txt="12:00 am"></label>
+                    </div>
+                  </div>
+              </div>
+          </div> -->
+
+          
+          <div class="radio-container">
+              <div class="radio-wrapper">
+                <label class="radio-button">
+                  <input id="option1" name="radio-group" type="radio"  value="Female" {% if data.get('gender') == 'F' %}checked{% endif %}>
+                  <span class="radio-checkmark"></span>
+                  <span class="radio-label">Female</span>
+                </label>
+              </div>
+            
+              <div class="radio-wrapper">
+                <label class="radio-button">
+                  <input id="option2" name="radio-group" type="radio"  value="Male" {% if data.get('gender') == 'M' %}checked{% endif %}>
+                  <span class="radio-checkmark"></span>
+                  <span class="radio-label">Male</span>
+                </label>
+              </div>
+          </div>
+
+            
+
+
+            <div class="shift">
+                <div class="select">
+                    <div
+                      class="selected"
+                      data-default="Start Shift"
+                      data-one="8:00 am"
+                      data-two="6:00 pm"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="1em"
+                        viewBox="0 0 512 512"
+                        class="arrow"
+                      >
+                        <path
+                          d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="options">
+                      <div title="Start Shift">
+                        <input id="all" name="option" type="radio" checked="" />
+                        <label class="option" for="all" data-txt="Start Shift"></label>
+                      </div>
+                      <div title="8:00 am">
+                        <input id="option-1" name="option" type="radio" />
+                        <label class="option" for="option-1" data-txt="8:00 am"></label>
+                      </div>
+                      <div title="6:00 pm">
+                        <input id="option-2" name="option" type="radio" />
+                        <label class="option" for="option-2" data-txt="6:00 pm"></label>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="select1">
+                    <div
+                      class="selected1"
+                      data-default="End Shift"
+                      data-one="4:00 pm"
+                      data-two="12:00 am"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="1em"
+                        viewBox="0 0 512 512"
+                        class="arrow1"
+                      >
+                        <path
+                          d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="options1">
+                      <div title="End Shift">
+                        <input id="all1" name="option1" type="radio" checked="" />
+                        <label class="option1" for="all1" data-txt="End Shift"></label>
+                      </div>
+                      <div title="4:00 pm">
+                        <input id="option-11" name="option1" type="radio" />
+                        <label class="option1" for="option-11" data-txt="4:00 pm"></label>
+                      </div>
+                      <div title="12:00 am">
+                        <input id="option-21" name="option1" type="radio" />
+                        <label class="option1" for="option-21" data-txt="12:00 am"></label>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="radio-container">
+                <div class="radio-wrapper">
+                  <label class="radio-button">
+                    <input id="option1" name="radio-group" type="radio">
+                    <span class="radio-checkmark"></span>
+                    <span class="radio-label">Male</span>
+                  </label>
+                </div>
+              
+                <div class="radio-wrapper">
+                  <label class="radio-button">
+                    <input id="option2" name="radio-group" type="radio">
+                    <span class="radio-checkmark"></span>
+                    <span class="radio-label">Female</span>
+                  </label>
+                </div>
+              </div>
+              
+
+              
+
+
+        </div>
+
+
+
+
+        <script src="../static/JS/front_desk.js"></script>
+        <script src="https://kit.fontawesome.com/8fdfd2bc9a.js" crossorigin="anonymous"></script>
+
+        <script>
+            document.getElementById("show").addEventListener("click", function () {
+                document.getElementById("hidden").style.display = "block";
+            });
+            document.getElementById("hide").addEventListener("click", function () {
+                document.getElementById("hidden").style.display = "none";
+            });
+            
+
+            document.getElementById("show1").addEventListener("click", function () {
+                document.getElementById("hidden1").style.display = "block";
+            });
+            document.getElementById("hide1").addEventListener("click", function () {
+                document.getElementById("hidden1").style.display = "none";
+            });
+        </script>
+        <script>
+        
+          document.querySelectorAll('.edit-btn').forEach((btn, index) => {
+              btn.addEventListener('click', function() {
+                  const container = btn.parentElement;
+                  const displayText = container.querySelector('.display-text');
+                  const inputField = container.querySelector('.input-field');
+                  const editBtn = container.querySelector('.edit-btn');
+                  const doneBtn = container.querySelector('.done-btn');
+                  
+                  inputField.value = displayText.innerText;
+                  displayText.style.display = 'none';
+                  inputField.style.display = 'inline';
+                  editBtn.style.display = 'none';
+                  doneBtn.style.display = 'inline';
+              });
+          });
+  
+          document.querySelectorAll('.done-btn').forEach((btn, index) => {
+              btn.addEventListener('click', function() {
+                  const container = btn.parentElement;
+                  const displayText = container.querySelector('.display-text');
+                  const inputField = container.querySelector('.input-field');
+                  const editBtn = container.querySelector('.edit-btn');
+                  const doneBtn = container.querySelector('.done-btn');
+                  
+                  displayText.innerText = inputField.value;
+                  displayText.style.display = 'inline';
+                  inputField.style.display = 'none';
+                  editBtn.style.display = 'inline';
+                  doneBtn.style.display = 'none';
+              });
+          });
+      </script>
+    </div>
+
+
+</body>
+
+</html>

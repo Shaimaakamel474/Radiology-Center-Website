@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static' , filename='css/user_bass.css')}}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <div class="container2" id="hidden">
+        <div class="title2">Edit</div>
+        
+            
+
+
+           <div class="left">
+            <form action="/update" method="post">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+
+
+            <div class="fullname_details">
+                <div class="input_box">
+                    <span class="details">fullname</span>
+                    <input type="text" name="fullname_new" placeholder=" Enter your fullname"
+                    value= "{{data['fullname']}}"
+                    onfocus="clearDefaultValue(this)" onblur="restoreDefaultValue(this)">
+                </div>
+            </div>
+            
+            <div class="username_details">
+                <div class="input_box">
+                    <span class="details">Username</span>
+                    <input type="text" name="username_new" placeholder=" Enter your Username"
+                    value= "{{data['username']}}"
+                    onfocus="clearDefaultValue(this)" onblur="restoreDefaultValue(this)">
+                </div>
+            </div>
+
+
+            <div class="Email_details">
+                <div class="input_box">
+                    <span class="details">Email</span>
+                    <input type="email" name="email_new" placeholder=" Enter your Email" 
+                    value="{{data['email']}}"
+                    onfocus="clearDefaultValue(this)" onblur="restoreDefaultValue(this)">
+                </div>
+            </div>
+
+            <div class="password_details">
+                <div class="input_box">
+                    <span class="details">Password</span>
+                   
+                    <input type="password" id="key" name="password_new" placeholder=" Enter your  New password"
+                    >
+                </div>
+            </div>
+
+            <div class="confirm_password_details">
+                <div class="input_box">
+                    <span class="details">confirm Password</span>
+                    
+                    <input type="password" id="key" name="confirm_password_new" placeholder=" Enter your  confirm password"
+                    >
+                </div>
+            </div>
+
+
+
+        </div>
+    
+            <div class="right">
+                
+                <div class="image_details">
+                    <div class="input_box">
+                        <span class="details">Image</span>
+                        <input type="file" id="image"  name="img_url_new" value="{{data['img_url']}}">
+                        <label for="image"> Upload Your Image</label>
+                    </div>
+                </div>
+
+                <div class="links_details">
+                    <div class="input_box">
+                        <span class="details">Linkedin Account</span>
+                        <input type="email" name="linkedin_new" placeholder=" Enter your Linkedin Account" 
+                        value="{{data['linkedin']}}"
+                        onfocus="clearDefaultValue(this)" onblur="restoreDefaultValue(this)">
+                    </div>
+                </div>
+        
+                    <div class="input_box">
+                        <span class="details">Facebook Account</span>
+                        <input type="email" name="face_link_new" placeholder=" Enter your Facebook Account"
+                        value="{{data['face_link']}}"
+                        onfocus="clearDefaultValue(this)" onblur="restoreDefaultValue(this)">
+                    </div>
+        
+
+
+               
+        
+                <div class="address_details">
+                    <div class="input_box">
+                        <span class="details">Address</span>
+                        <input type="text" name="address_new" placeholder=" Enter your Address" 
+                        value="{{data['address']}}"
+                        onfocus="clearDefaultValue(this)" onblur="restoreDefaultValue(this)">
+                    </div>
+                </div>
+        
+
+                <div class="phone_details">
+                    <div class="input_box">
+                        <span class="details">Phone Number</span>
+                        <input type="tel" name="phone_num_new" placeholder=" Enter your Phone Number" 
+                        value="{{data['phone_num']}}"
+                        onfocus="clearDefaultValue(this)" onblur="restoreDefaultValue(this)">
+                    </div>
+                </div>
+
+                <div class="buttom">                    
+                    <input type="submit" value="update">
+                </div>
+
+            </div>
+
+        
+        </form>  
+    </div>
+
+<!--     containnnnnnnnnnnnnnnnnnnnnnnner  -->
+    <div class="container" id="main">
+        <div class="left">
+            <form action="/user" method="post">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <img src="{{ url_for('static', filename='img/' + data['img_url']) }}" alt="" width="120px">
+            <h4>{{data['fullname']}}</h4>
+            <p>{{data['date']}}</p>
+
+            <div class="icon1">
+                <i class='bx bx-cart'></i>
+                <p>Order: 456</p>
+            </div>
+
+            <div class="icon2">
+                <i class='bx bx-message-dots'></i>
+                <p>Post: 828</p>
+            </div>
+
+            <div class="icon3">
+                <i class='bx bx-task' ></i>
+                <p>Task Done: 1024</p>
+            </div>
+            
+
+            <div class="btn">
+                <input type="button" name="" id="show" value="Edit">
+            </div>
+
+        </div>
+        <div class="right">
+
+
+            <div class="info">
+                <h3>Infromation</h3>
+                <div class="info_data">
+                    <div class="data">
+                        <h4>Email</h4>
+                        <a href="#"><p>{{data['email']}}</p></a>
+                        <h4>Linkedin</h4>
+                        <a href="#"><p>{{data['linkedin']}}</p></a>
+                    </div>
+
+                    <div class="data">
+                        <h4>Phone Number</h4>
+                        <p>{{data['phone_num']}}</p> 
+                    </div>
+
+                    <div class="data">
+                        <h4>Address</h4>
+                        <p>{{data['address']}} </p> 
+                    </div>
+
+                    <div class="icon">
+                        <a href="#"><i class='bx bxl-facebook-square'></i></a>
+                        <a href="#"><i class='bx bxl-instagram' ></i></a>
+                        <a href="#"><i class='bx bxl-twitter'></i></a>
+                    </div>
+
+                </div>
+            </div>
+
+.            <div class="act">
+                <h3>Activity</h3>
+                <div class="act_data">
+                    <div class="data">
+                        <h4>Recent</h4>
+                        <p>Lorem, ipsum dolor sit amet consectetur &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2013/3/2</p>
+                        <p>Lorem, ipsum dolor sit amet consectetur &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2013/7/12</p>
+                        <p>Lorem, ipsum dolor sit amet consectetur &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2013/5/21</p>
+                        <p>Lorem, ipsum dolor sit amet consectetur &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2013/7/3</p>
+
+                    </div>
+                </div>
+            </div>
+         </form>
+            <div class="btn">
+                <form action="/logout" method="POST">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <input type="submit"  value="Logout">
+                    </form>
+            </div>
+
+
+            
+ 
+        </div>
+        
+    </div>
+
+
+
+    <script>
+        document.getElementById("show").addEventListener("click", function() {
+            document.getElementById("hidden").style.display = "block";
+        });
+        </script>
+    
+    <script>
+        document.getElementById("show").addEventListener("click", function() {
+            document.getElementById("main").style.display = "none";
+        });
+        </script>
+        <script>
+            function clearDefaultValue(input) {
+                if (input.value === input.defaultValue) {
+                    input.value = ''; // Clear the default value when input field is focused
+                }
+            }
+            
+            function restoreDefaultValue(input) {
+                if (input.value === '') {
+                    input.value = input.defaultValue; // Restore the default value if no input provided
+                }
+            }
+            </script>
+
+
+
+
+
+
+</body>
+</html>

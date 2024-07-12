@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>Sign in</title>
+    <link rel="stylesheet" href="../static/css/register.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+<body>
+
+    <div class="container">
+        
+        <div class="header">
+            <div class="one">
+                <img src="../static/img/logo.png" alt="logo" width="109px" height="83px">
+            </div>
+            <div class="two">
+                <p>Contact Us</p>
+                <a href=""><i class='bx bxl-facebook-circle'></i></a>
+                <a href=""><i class='bx bxl-instagram' ></i></a>
+                <a href=""><i class='bx bxl-twitter'></i></a>
+            </div>
+
+        </div>
+
+       
+        <div class="body">
+
+            <div class="main">
+                <div class="title">Sign Up</div>
+                <form action="/register" method="post">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+
+                    <div class="body2">
+                        <div class="first">
+                            <div class="user_details">
+                                <div class="input_box">
+                                    <span class="details">Name</span>
+                                    <input type="text" name="name" placeholder=" Enter your Name" required>
+                                </div>
+                            </div>
+
+                            <div class="user_details">
+                                <div class="input_box">
+                                    <span class="details">ID</span>
+                                    <input type="text" name="patient_ssn" placeholder=" Enter your ID" required>
+                                </div>
+                            </div>
+
+
+                            <div class="user_details">
+                                <div class="input_box">
+                                    <span class="details">Email</span>
+                                    <input type="text" name="email" placeholder=" Enter your Email" required>
+                                </div>
+                            </div>
+
+                            <div class="user_details">
+                                <div class="input_box">
+                                    <span class="details">Password</span>
+                                    <input type="password" name="password" placeholder=" Enter your Password" required>
+                                </div>
+                            </div>
+
+
+                            <div class="user_details">
+                                <div class="input_box">
+                                    <span class="details">Confirm your password</span>
+                                    <input type="password" name="confirm_password" placeholder="Confirm your password"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="second">
+                            <div class="user_details">
+                                <div class="input_box">
+                                    <span class="details">Address</span>
+                                    <input type="address" name="address" placeholder="Confirm your password" required>
+                                </div>
+                            </div>
+
+                            <div class="user_details">
+                                <div class="input_box">
+                                    <span class="details">Age</span>
+                                    <input type="address" name="age" placeholder="Confirm your password" required>
+                                </div>
+                            </div>
+                            <div class="user_details">
+                                <div class="input_box">
+                                    <span class="details">phone Number</span>
+                                    <input type="address" name="phone_number" placeholder="Confirm your password"
+                                        required>
+                                </div>
+                            </div>
+
+                            <div class="gender_details">
+                                <input type="radio" name="gender" id="dot-1" value="M">
+                                <input type="radio" name="gender" id="dot-2" value="F">
+                                <span class="gender_title">Gender</span>
+
+                                <div class="choose">
+
+                                    <label for="dot-1">
+                                        <span class="dot one">
+                                            <span class="gender">Male</span>
+                                        </span>
+                                    </label>
+
+                                    <label for="dot-2">
+                                        <span class="dot two">
+                                            <span class="gender">Female</span>
+                                        </span>
+                                    </label>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="buttom">
+                                <input type="submit" value="Done">
+                            </div>
+                            
+                        </div>
+                    </div>
+
+
+
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

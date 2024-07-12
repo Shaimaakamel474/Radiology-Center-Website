@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <!-- Bootstrap CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <title>Upload Scan</title>
+</head>
+<body>
+
+<div class="viewmore-button">
+    <h3><a class="contact-form-button" onclick="openPopup_upload_scan()" style="width: 150px; height: 45px;">Upload Scan</a></h3>
+    <div id="popupContainer_upload_scan" class="popup-container2" style="padding-top: 200px;">
+        <div class="popup-content" style="height: 120px;">
+            <div class="close_btn" onclick="closePopup_upload_scan()">&times;</div>
+            
+            <form id="uploadForm" action="/upload_scan" method="POST" enctype="multipart/form-data">
+               
+                <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+                <div>
+                    <label>Select folder:</label>
+                    <input type="file" id="scanFolderInput" name="scan_folder" webkitdirectory required>
+                </div>
+                <br>
+                <p id="error-message" style="color: red;"></p>
+                <input type="submit" value="Upload" onclick="validateAndClosePopup(event)">
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openPopup_upload_scan() {
+        document.getElementById("popupContainer_upload_scan").style.display = "block";
+        document.body.classList.add("blur-background");
+    }
+
+    function closePopup_upload_scan() {
+        document.getElementById("popupContainer_upload_scan").style.display = "none";
+        document.body.classList.remove("blur-background");
+    }
+
+    function validateAndClosePopup(event) {
+        const input = document.getElementById('scanFolderInput');
+        const errorMessage = document.getElementById('error-message');
+        const files = input.files;
+        let isValid = true;
+
+        // No need to validate file types here as we are using webkitdirectory which expects a folder selection
+
+        if (!isValid) {
+            errorMessage.textContent = 'Error: Only image files (JPEG, PNG, JPG) are allowed.';
+            event.preventDefault();  // Prevent form submission
+        } else {
+            errorMessage.textContent = '';
+            closePopup_upload_scan(); // Close the popup if validation passes
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Device Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../static/css/rad.css">
+</head>
+<body>
+    <h1>Device Dashboard</h1>
+
+    <canvas id="numMalfunctionsChart"></canvas>
+    <canvas id="devicesPerBranchChart"></canvas>
+    <canvas id="maintenancePerDeviceChart"></canvas>
+    <canvas id="installationDateDistributionChart"></canvas>
+    <canvas id="devicesNearWarrantyExpiryChart"></canvas>
+
+    <script>
+        // Fetch and render Number of Malfunctions per Device
+        fetch('/api/num_malfunctions_per_device')
+            .then(response => response.json())
+            .then(data => {
+                const labels = data.map(device => device.device_name);
+                const values = data.map(device => device.num_malfunctions);
+
+                const ctx = document.getElementById('numMalfunctionsChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Number of Malfunctions',
+                            data: values,
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            });
+
+
+        // Fetch and render Maintenance Types per Device
+        fetch('/api/maintenance_per_device')
+            .then(response => response.json())
+            .then(data => {
+                const labels = data.map(device => device.device_name);
+                const corrective = data.map(device => device.corrective_maintenance);
+                const preventative = data.map(device => device.preventative_maintenance);
+
+                const ctx = document.getElementById('maintenancePerDeviceChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Corrective Maintenance',
+                            data: corrective,
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1
+                        }, {
+                            label: 'Preventative Maintenance',
+                            data: preventative,
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            });
+
+        // Fetch and render Installation Date Distribution
+        fetch('/api/installation_date_distribution')
+            .then(response => response.json())
+            .then(data => {
+                const dates = data.map(installation => new Date(installation.installation_date));
+                const labels = dates.map(date => date.toISOString().split('T')[0]);
+                const counts = labels.reduce((acc, date) => {
+                    acc[date] = (acc[date] || 0) + 1;
+                    return acc;
+                }, {});
+                
+                const sortedLabels = Object.keys(counts).sort();
+                const sortedCounts = sortedLabels.map(label => counts[label]);
+
+                const ctx = document.getElementById('installationDateDistributionChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: sortedLabels,
+                        datasets: [{
+                            label: 'Installation Dates',
+                            data: sortedCounts,
+                            backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                            borderColor: 'rgba(153, 102, 255, 1)',
+                            borderWidth: 1,
+                            fill: true
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            });
+
+        // Fetch and render Devices Near Warranty Expiry
+        fetch('/api/devices_near_warranty_expiry')
+            .then(response => response.json())
+            .then(data => {
+                const labels = data.map(device => device.device_name);
+                const values = data.map(device => new Date(device.warrantyexpirydate).toISOString().split('T')[0]);
+
+                const ctx = document.getElementById('devicesNearWarrantyExpiryChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Warranty Expiry Date',
+                            data: values,
+                            backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                            borderColor: 'rgba(255, 159, 64, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                type: 'time',
+                                time: {
+                                    unit: 'day'
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+    </script>
+</body>
+</html>
