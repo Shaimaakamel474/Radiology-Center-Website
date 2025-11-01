@@ -59,13 +59,11 @@ This project provides an integrated web platform that connects patients, radiolo
 **Database**
 - SQLite / MySQL (depending on setup)
 ---
-
 ## 🌐 Demo
 
-You can view the live demonstration and discussion on GitHub:  
-🔗 [**Radiology Center Website — Demo**](https://github.com/user-attachments/assets/a957ba6e-2248-4abb-b364-6d6b64958bea)
+You can view the live demonstration below:  
 
----
+https://github.com/user-attachments/assets/a957ba6e-2248-4abb-b364-6d6b64958bea
 
 1. **Clone the repository**
    ```bash
