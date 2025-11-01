@@ -63,9 +63,12 @@ This project provides an integrated web platform that connects patients, radiolo
 
 ## ⚙️ Installation & Setup
 
+### 🎥 Demo 1
+[![Watch the video](https://img.shields.io/badge/▶️-Watch%20Video-blue)](https://github.com/user-attachments/assets/1b96cfd5-9273-4df6-9189-531ce07b2009)
 
+### 🎥 Demo 2
+[![Watch the video](https://img.shields.io/badge/▶️-Watch%20Video-blue)](https://github.com/user-attachments/assets/1eeb2092-69cc-496e-a6aa-a0041fe3dfc9)
 
-<!-- Uploading "clideo_editor_6907e45b02304bab884145c4a86ba02c.mp4"... -->
 
 1. **Clone the repository**
    ```bash
