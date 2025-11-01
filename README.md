@@ -61,12 +61,12 @@ This project provides an integrated web platform that connects patients, radiolo
 
 ---
 
-## ⚙️ Installation & Setup
+## ⚙️ Demo Videos
 
-### 🎥 Demo 1
+### 🎥 scenario  1
 [![Watch the video](https://img.shields.io/badge/▶️-Watch%20Video-blue)](https://github.com/user-attachments/assets/1b96cfd5-9273-4df6-9189-531ce07b2009)
 
-### 🎥 Demo 2
+### 🎥 scenario  2
 [![Watch the video](https://img.shields.io/badge/▶️-Watch%20Video-blue)](https://github.com/user-attachments/assets/1eeb2092-69cc-496e-a6aa-a0041fe3dfc9)
 
 
