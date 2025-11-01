@@ -1,11 +1,11 @@
-# 🏥 Radiology Center Management System
+# Radiology Center Management System
 
 A complete **Radiology Center Web Application** designed to streamline workflows between **Doctors**, **Radiologists**, and **Patients**.  
 Built with **Flask (Python)** for the backend and **HTML, CSS, and JavaScript** for the frontend.
 
 ---
 
-## 🚀 Overview
+##  Overview
 
 This project provides an integrated web platform that connects patients, radiologists, and doctors within a radiology center.
 
@@ -15,7 +15,7 @@ This project provides an integrated web platform that connects patients, radiolo
 
 ---
 
-## 🧠 System Workflow
+## System Workflow
 
 1. **Patient**
    - Creates an account or logs in.
@@ -36,17 +36,17 @@ This project provides an integrated web platform that connects patients, radiolo
 
 ---
 
-## 🧩 Features
+## Features
 
 | Role | Features |
 |------|-----------|
-| 🧑‍⚕️ **Doctor** | - View assigned patient scans<br>- Upload reports & diagnosis<br>- Manage previous cases |
-| 🩻 **Radiologist** | - Upload scans for patients<br>- Assign scans to doctors<br>- Manage imaging records |
-| 👩‍🦰 **Patient** | - Book appointments<br>- Track scan status<br>- View scan results and reports |
+| **Doctor** | - View assigned patient scans<br>- Upload reports & diagnosis<br>- Manage previous cases |
+| **Radiologist** | - Upload scans for patients<br>- Assign scans to doctors<br>- Manage imaging records |
+| **Patient** | - Book appointments<br>- Track scan status<br>- View scan results and reports |
 
 ---
 
-## 🛠️ Tech Stack
+##Tech Stack
 
 **Frontend**
 - HTML5  
